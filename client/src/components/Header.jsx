@@ -9,7 +9,8 @@ function Header() {
 
                 <ul className='right'>
                     <Link className='link' to="/">Welcome Screen / </Link>
-                    <Link className='link' to="/Discussion">Discussion Page</Link>
+                    <Link className='link' to="/Discussion">Discussion Page / </Link>
+                    <Link className='link' to="/Login">Login</Link>
 
                 </ul>
 
