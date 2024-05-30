@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Book Club A",
+      "description": "A club for avid readers",
+      "members": ["Member 1", "Member 2", "Member 3"]
+    },
+    {
+      "name": "Literary Society",
+      "description": "Exploring literature together",
+      "members": ["Member 4", "Member 5", "Member 6"]
+    },
+    {
+      "name": "Science Fiction Fans",
+      "description": "Diving into the realms of sci-fi",
+      "members": ["Member 7", "Member 8"]
+    }
+  ]

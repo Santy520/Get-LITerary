@@ -1,0 +1,26 @@
+[
+    {
+      "title": "Book 1",
+      "author": "Author 1",
+      "info": "Information about Book 1",
+      "about": "About Book 1"
+    },
+    {
+      "title": "Book 2",
+      "author": "Author 2",
+      "info": "Information about Book 2",
+      "about": "About Book 2"
+    },
+    {
+      "title": "Book 3",
+      "author": "Author 3",
+      "info": "Information about Book 3",
+      "about": "About Book 3"
+    },
+    {
+      "title": "Book 4",
+      "author": "Author 4",
+      "info": "Information about Book 4",
+      "about": "About Book 4"
+    }
+  ]
