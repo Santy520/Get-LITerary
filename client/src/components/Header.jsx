@@ -5,7 +5,7 @@ function Header() {
     return (
         <header>
             <nav>
-                <h1 className='left'>Santiago Palacio</h1>
+                <h1 className='left'>Book Club</h1>
 
                 <ul className='right'>
                     <Link className='link' to="/">Welcome Screen / </Link>
