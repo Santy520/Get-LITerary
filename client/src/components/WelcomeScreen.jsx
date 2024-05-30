@@ -4,9 +4,9 @@ function WelcomeScreen() {
     return (
         <body>
             
-  <div className="about-me-section">
-    <h1 className="body">Welcome Screen</h1>
-    <p className="about-me-text">
+  <div className="body-section">
+    <h2 className="body">Welcome Screen</h2>
+    <p className="body-text">
       Hello! welcome to our Project!!!
     </p>
   </div>
