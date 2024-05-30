@@ -1,0 +1,33 @@
+[
+    {
+      "book": "Book 1",
+      "threads": [
+        {
+          "title": "Character Analysis",
+          "posts": [
+            "Post 1",
+            "Post 2",
+            "Post 3"
+          ]
+        },
+        {
+          "title": "Plot Discussion",
+          "posts": [
+            "Post 4",
+            "Post 5"
+          ]
+        }
+      ]
+    },
+    {
+      "book": "Book 2",
+      "threads": [
+        {
+          "title": "Chapter 1 Discussion",
+          "posts": [
+            "Post 6"
+          ]
+        }
+      ]
+    }
+  ]
