@@ -45,8 +45,16 @@ const resolvers = {
             }
         },
 
+        // GET ALL POSTS
+        posts: async () => { // Update to fetch posts
+            try {
+                return await Post.find({});
+            } catch (err) {
+                throw new Error('Error fetching posts');
+            }
+        },
 
-        // GET BY ID
+        // GET BOOK BY ID
         book: async (parent, { id }) => {
             try {
                 return await Book.findById(id);
@@ -73,7 +81,7 @@ const resolvers = {
             }
         },
 
-        // 
+        // GET TOPIC BY ID
         topic: async (parent, { id }) => { // Add resolver for fetching a single topic
             try {
                 return await Topic.findById(id);
@@ -81,8 +89,18 @@ const resolvers = {
                 throw new Error('Error fetching topic');
             }
         },
+
+        // GET POST BY ID
+        post: async (parent, { id }) => {
+            try {
+                 return await Post.findById(id);
+            } catch (err) {
+                throw new Error('Error fetching post');
+            }
+         },
     },
 
+    
 
     Mutation: {
 

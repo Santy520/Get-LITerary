@@ -15,7 +15,7 @@ const typeDefs = gql `
         currentBook: Book
         pastBooks: [Book]
         members: [User]
-        discussionTopics: [Topic]
+        topics: [Topic]
     }
 
     type User {
@@ -36,10 +36,10 @@ const typeDefs = gql `
 
     type Post {
         id: ID!
-        discussionTopicId: Topic!
+        topicId: Topic!
         authorId: User!
         content: String!
-        timestamp: String!
+        createdAt: String
     }
 
     type Auth {
@@ -66,8 +66,8 @@ const typeDefs = gql `
         updateBook(id: ID!, title: String, author: String, summary: String): Book
         deleteBook(id: ID!): Book
 
-        addClub(name: String!, currentBook: ID, pastBooks: [ID], members: [ID], discussionTopics: [ID]): Club
-        updateClub(id: ID!, name: String, currentBook: ID, pastBooks: [ID], members: [ID], discussionTopics: [ID]): Club
+        addClub(name: String!, currentBook: ID, pastBooks: [ID], members: [ID], topics: [ID]): Club
+        updateClub(id: ID!, name: String, currentBook: ID, pastBooks: [ID], members: [ID], topics: [ID]): Club
         deleteClub(id: ID!): Club
 
         addUser(name: String!, email: String!, password: String!, clubs: [ID]): User
@@ -79,8 +79,8 @@ const typeDefs = gql `
         updateTopic(id: ID!, clubId: ID, title: String, bookId: ID, posts: [ID]): Topic
         deleteTopic(id: ID!): Topic
 
-        addPost(discussionTopicId: ID!, authorId: ID!, content: String!): Post
-        updatePost(id: ID!, discussionTopicId: ID, authorId: ID, content: String): Post
+        addPost(topicId: ID!, authorId: ID!, content: String!): Post
+        updatePost(id: ID!, topicId: ID, authorId: ID, content: String): Post
         deletePost(id: ID!): Post
     }
 `;

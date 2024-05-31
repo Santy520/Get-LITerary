@@ -1,17 +1,20 @@
 [
     {
-      "name": "Alice",
-      "email": "alice@example.com",
-      "password": "password123"
+      "name": "Henry",
+      "email": "1hramsey@aol.com",
+      "password": "testing123",
+      "clubs": [ ] 
     },
     {
-      "name": "Bob",
-      "email": "bob@example.com",
-      "password": "password456"
+      "name": "Antonia",
+      "email": "1whitestar332@gmail.com",
+      "password": "wordpass1",
+      "clubs": [ ]
     },
     {
-      "name": "Charlie",
-      "email": "charlie@example.com",
-      "password": "password789"
+      "name": "Mark",
+      "email": "1markpd@hotmail.com",
+      "password": "helloMoto",
+      "clubs": [ ]
     }
   ]
