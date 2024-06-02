@@ -9,6 +9,5 @@ const clubSchema = new Schema({
     members: [{ type: Schema.Types.ObjectId, ref: 'User' }], // Changed to array
     topics: [{ type: Schema.Types.ObjectId, ref: 'Topic' }]
 });
-
 const Club = model('Club', clubSchema);
 module.exports = Club;

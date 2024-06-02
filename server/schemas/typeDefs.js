@@ -34,7 +34,6 @@ const typeDefs = gql `
         bookId: Book!
         posts: [Post]
     }
-
     type Post {
         _id: ID!
         topicId: Topic!

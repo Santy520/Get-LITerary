@@ -15,6 +15,5 @@ const postSchema = new Schema({
         getters: true,
     }
 });
-
 const Post = model('Post', postSchema);
 module.exports = Post;

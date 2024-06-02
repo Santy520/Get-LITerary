@@ -269,7 +269,6 @@ const resolvers = {
 
     },
 
-
         Topic: { // 🟢 Adding the Topic resolver here
             clubId: async (parent) => {
                 return await Club.findById(parent.clubId);
@@ -289,9 +288,7 @@ const resolvers = {
             },
             posts: async (parent) => {
                 return await Post.find({ _id: { $in: parent.posts } });
-
             },
-
     },
 };
 

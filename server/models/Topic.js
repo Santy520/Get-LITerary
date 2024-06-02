@@ -9,6 +9,5 @@ const topicSchema = new Schema({
     posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]  // References to Post model
     
 });
-
 const Topic = model('Topic', topicSchema);
 module.exports = Topic;
