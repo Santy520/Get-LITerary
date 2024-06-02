@@ -1,163 +1,232 @@
 import { gql } from '@apollo/client';
 
 // User Mutations
-export const LOGIN_USER = gql`
-  mutation LoginUser($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        _id
-        name
-        email
-      }
+export const ADD_USER = gql`
+    mutation addUser($name: String!, $email: String!, $password: String!, $clubs: [ID]) {
+        addUser(name: $name, email: $email, password: $password, clubs: $clubs) {
+            token
+            user {
+                id
+                name
+                email
+                clubs {
+                    id
+                    name
+                }
+            }
+        }
     }
-  }
 `;
 
-export const CREATE_USER = gql`
-  mutation CreateUser($name: String!, $email: String!, $password: String!) {
-    addUser(name: $name, email: $email, password: $password) {
-      token
-      user {
-        _id
-        name
-        email
-      }
+export const LOGIN = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                id
+                name
+                email
+                clubs {
+                    id
+                    name
+                }
+            }
+        }
     }
-  }
 `;
 
 export const UPDATE_USER = gql`
-  mutation UpdateUser($id: ID!, $name: String, $email: String, $password: String) {
-    updateUser(id: $id, name: $name, email: $email, password: $password) {
-      _id
-      name
-      email
+    mutation updateUser($id: ID!, $name: String, $email: String, $password: String) {
+        updateUser(id: $id, name: $name, email: $email, password: $password) {
+            id
+            name
+            email
+            clubs {
+                id
+                name
+            }
+        }
     }
-  }
 `;
 
 export const DELETE_USER = gql`
-  mutation DeleteUser($id: ID!) {
-    deleteUser(id: $id) {
-      _id
-      name
-      email
+    mutation deleteUser($id: ID!) {
+        deleteUser(id: $id) {
+            id
+        }
     }
-  }
 `;
 
 // Book Mutations
 export const ADD_BOOK = gql`
-  mutation AddBook($title: String!, $author: String!, $summary: String, $clubs: [ID!]) {
-    addBook(title: $title, author: $author, summary: $summary, clubs: $clubs) {
-      _id
-      title
-      author
-      summary
-      clubs {
-        _id
-        name
-      }
+    mutation addBook($title: String!, $author: String!, $summary: String, $clubs: [ID]) {
+        addBook(title: $title, author: $author, summary: $summary, clubs: $clubs) {
+            id
+            title
+            author
+            summary
+            clubs {
+                id
+                name
+            }
+        }
     }
-  }
 `;
 
-export const REMOVE_BOOK = gql`
-  mutation RemoveBook($id: ID!) {
-    deleteBook(id: $id) {
-      _id
-      title
-      author
+export const UPDATE_BOOK = gql`
+    mutation updateBook($id: ID!, $title: String, $author: String, $summary: String) {
+        updateBook(id: $id, title: $title, author: $author, summary: $summary) {
+            id
+            title
+            author
+            summary
+        }
     }
-  }
+`;
+
+export const DELETE_BOOK = gql`
+    mutation deleteBook($id: ID!) {
+        deleteBook(id: $id) {
+            id
+        }
+    }
 `;
 
 // Club Mutations
 export const ADD_CLUB = gql`
-  mutation AddClub($name: String!, $currentBook: ID, $pastBooks: [ID!], $members: [ID!], $topics: [ID!]) {
-    addClub(name: $name, currentBook: $currentBook, pastBooks: $pastBooks, members: $members, topics: $topics) {
-      _id
-      name
-      currentBook {
-        _id
-        title
-      }
-      pastBooks {
-        _id
-        title
-      }
-      members {
-        _id
-        name
-      }
-      topics {
-        _id
-        title
-      }
+    mutation addClub($name: String!) {
+        addClub(name: $name) {
+            id
+            name
+        }
     }
-  }
 `;
 
-export const REMOVE_CLUB = gql`
-  mutation RemoveClub($id: ID!) {
-    deleteClub(id: $id) {
-      _id
-      name
+export const UPDATE_CLUB = gql`
+    mutation updateClub($id: ID!, $name: String, $currentBook: ID, $pastBooks: [ID], $members: [ID], $topics: [ID]) {
+        updateClub(id: $id, name: $name, currentBook: $currentBook, pastBooks: $pastBooks, members: $members, topics: $topics) {
+            id
+            name
+            currentBook {
+                id
+                title
+            }
+            pastBooks {
+                id
+                title
+            }
+            members {
+                id
+                name
+            }
+            topics {
+                id
+                title
+            }
+        }
     }
-  }
+`;
+
+export const DELETE_CLUB = gql`
+    mutation deleteClub($id: ID!) {
+        deleteClub(id: $id) {
+            id
+        }
+    }
 `;
 
 // Topic Mutations
 export const ADD_TOPIC = gql`
-  mutation AddTopic($clubId: ID!, $title: String!, $bookId: ID!) {
-    addTopic(clubId: $clubId, title: $title, bookId: $bookId) {
-      _id
-      title
-      clubId {
-        _id
-        name
-      }
-      bookId {
-        _id
-        title
-      }
+    mutation addTopic($clubId: ID!, $title: String!, $bookId: ID!, $posts: [ID]) {
+        addTopic(clubId: $clubId, title: $title, bookId: $bookId, posts: $posts) {
+            id
+            clubId {
+                id
+                name
+            }
+            title
+            bookId {
+                id
+                title
+            }
+            posts {
+                id
+                content
+            }
+        }
     }
-  }
 `;
 
-export const REMOVE_TOPIC = gql`
-  mutation RemoveTopic($id: ID!) {
-    deleteTopic(id: $id) {
-      _id
-      title
+export const UPDATE_TOPIC = gql`
+    mutation updateTopic($id: ID!, $clubId: ID, $title: String, $bookId: ID, $posts: [ID]) {
+        updateTopic(id: $id, clubId: $clubId, title: $title, bookId: $bookId, posts: $posts) {
+            id
+            clubId {
+                id
+                name
+            }
+            title
+            bookId {
+                id
+                title
+            }
+            posts {
+                id
+                content
+            }
+        }
     }
-  }
+`;
+
+export const DELETE_TOPIC = gql`
+    mutation deleteTopic($id: ID!) {
+        deleteTopic(id: $id) {
+            id
+        }
+    }
 `;
 
 // Post Mutations
 export const ADD_POST = gql`
-  mutation AddPost($topicId: ID!, $authorId: ID!, $content: String!) {
-    addPost(topicId: $topicId, authorId: $authorId, content: $content) {
-      _id
-      content
-      topicId {
-        _id
-        title
-      }
-      authorId {
-        _id
-        name
-      }
+    mutation addPost($topicId: ID!, $authorId: ID!, $content: String!) {
+        addPost(topicId: $topicId, authorId: $authorId, content: $content) {
+            id
+            topicId {
+                id
+                title
+            }
+            authorId {
+                id
+                name
+            }
+            content
+            createdAt
+        }
     }
-  }
 `;
 
-export const REMOVE_POST = gql`
-  mutation RemovePost($id: ID!) {
-    deletePost(id: $id) {
-      _id
-      content
+export const UPDATE_POST = gql`
+    mutation updatePost($id: ID!, $topicId: ID, $authorId: ID, $content: String) {
+        updatePost(id: $id, topicId: $topicId, authorId: $authorId, content: $content) {
+            id
+            topicId {
+                id
+                title
+            }
+            authorId {
+                id
+                name
+            }
+            content
+            updatedAt
+        }
     }
-  }
+`;
+
+export const DELETE_POST = gql`
+    mutation deletePost($id: ID!) {
+        deletePost(id: $id) {
+            id
+        }
+    }
 `;

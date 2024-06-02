@@ -2,13 +2,13 @@ import { gql } from '@apollo/client';
 
 // User Queries
 export const GET_USER = gql`
-  query GetUser($id: ID!) {
+  query user($id: ID!) {
     user(id: $id) {
-      _id
+      id
       name
       email
       clubs {
-        _id
+        id
         name
       }
     }
@@ -16,13 +16,13 @@ export const GET_USER = gql`
 `;
 
 export const GET_USERS = gql`
-  query GetUsers {
+  query users {
     users {
-      _id
+      id
       name
       email
       clubs {
-        _id
+        id
         name
       }
     }
@@ -31,14 +31,14 @@ export const GET_USERS = gql`
 
 // Book Queries
 export const GET_BOOK = gql`
-  query GetBook($id: ID!) {
+  query book($id: ID!) {
     book(id: $id) {
-      _id
+      id
       title
       author
       summary
       clubs {
-        _id
+        id
         name
       }
     }
@@ -46,14 +46,14 @@ export const GET_BOOK = gql`
 `;
 
 export const GET_BOOKS = gql`
-  query GetBooks {
+  query books {
     books {
-      _id
+      id
       title
       author
       summary
       clubs {
-        _id
+        id
         name
       }
     }
@@ -62,24 +62,24 @@ export const GET_BOOKS = gql`
 
 // Club Queries
 export const GET_CLUB = gql`
-  query GetClub($id: ID!) {
+  query club($id: ID!) {
     club(id: $id) {
-      _id
+      id
       name
       currentBook {
-        _id
+        id
         title
       }
       pastBooks {
-        _id
+        id
         title
       }
       members {
-        _id
+        id
         name
       }
       topics {
-        _id
+        id
         title
       }
     }
@@ -87,24 +87,24 @@ export const GET_CLUB = gql`
 `;
 
 export const GET_CLUBS = gql`
-  query GetClubs {
+  query clubs {
     clubs {
-      _id
+      id
       name
       currentBook {
-        _id
+        id
         title
       }
       pastBooks {
-        _id
+        id
         title
       }
       members {
-        _id
+        id
         name
       }
       topics {
-        _id
+        id
         title
       }
     }
@@ -113,16 +113,16 @@ export const GET_CLUBS = gql`
 
 // Topic Queries
 export const GET_TOPIC = gql`
-  query GetTopic($id: ID!) {
+  query topic($id: ID!) {
     topic(id: $id) {
-      _id
+      id
       title
       clubId {
-        _id
+        id
         name
       }
       bookId {
-        _id
+        id
         title
       }
     }
@@ -130,16 +130,16 @@ export const GET_TOPIC = gql`
 `;
 
 export const GET_TOPICS = gql`
-  query GetTopics {
+  query topics {
     topics {
-      _id
+      id
       title
       clubId {
-        _id
+        id
         name
       }
       bookId {
-        _id
+        id
         title
       }
     }
@@ -148,16 +148,16 @@ export const GET_TOPICS = gql`
 
 // Post Queries
 export const GET_POST = gql`
-  query GetPost($id: ID!) {
+  query post($id: ID!) {
     post(id: $id) {
-      _id
+      id
       content
       topicId {
-        _id
+        id
         title
       }
       authorId {
-        _id
+        id
         name
       }
     }
@@ -165,16 +165,16 @@ export const GET_POST = gql`
 `;
 
 export const GET_POSTS = gql`
-  query GetPosts {
+  query posts {
     posts {
-      _id
+      id
       content
       topicId {
-        _id
+        id
         title
       }
       authorId {
-        _id
+        id
         name
       }
     }
