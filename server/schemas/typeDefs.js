@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql `
     type Book {
-        id: ID!
+        _id: ID!
         title: String!
         author: String!
         summary: String
@@ -10,7 +10,7 @@ const typeDefs = gql `
     }
 
     type Club {
-        id: ID!
+        _id: ID!
         name: String!
         currentBook: Book
         pastBooks: [Book]
@@ -19,7 +19,7 @@ const typeDefs = gql `
     }
 
     type User {
-        id: ID!
+        _id: ID!
         name: String!
         email: String!
         password: String
@@ -27,15 +27,16 @@ const typeDefs = gql `
     }
 
     type Topic {
-        id: ID!
+        _id: ID!
         clubId: Club!
-        title: String!
+        authorId: User!
+        title: String! 
         bookId: Book!
         posts: [Post]
     }
 
     type Post {
-        id: ID!
+        _id: ID!
         topicId: Topic!
         authorId: User!
         content: String!
@@ -75,7 +76,7 @@ const typeDefs = gql `
         deleteUser(id: ID!): User
         login(email: String!, password: String!): Auth
 
-        addTopic(clubId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
+        addTopic(clubId: ID!, authorId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
         updateTopic(id: ID!, clubId: ID, title: String, bookId: ID, posts: [ID]): Topic
         deleteTopic(id: ID!): Topic
 
