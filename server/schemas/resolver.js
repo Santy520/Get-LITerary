@@ -17,11 +17,7 @@ const resolvers = {
         // GET ALL BOOKS
         books: async () => {
             try {
-                const books = await Book.find({});
-                return books.map(book => ({
-                    ...book._doc,
-                    formattedDate: formatDate(book.createdAt)
-                }));
+                return await Book.find({}); 
             } catch (err) {
                 throw new Error('Error fetching books');
             }
@@ -39,6 +35,7 @@ const resolvers = {
         // GET ALL TOPICS
         topics: async () => { // Update to fetch topics
             try {
+                console.log("The topics are ", await Topic.find({}))
                 return await Topic.find({});
             } catch (err) {
                 throw new Error('Error fetching topics');
@@ -97,7 +94,7 @@ const resolvers = {
             } catch (err) {
                 throw new Error('Error fetching post');
             }
-         },
+     },
     },
 
     
@@ -212,15 +209,17 @@ const resolvers = {
             }
         },
 
-        // ADD TOPIC
-        addTopic: async (parent, args) => {
-            try {
-                const topic = new Topic(args);
-                return await topic.save();
-            } catch (err) {
-                throw new Error('Error adding topic');
-            }
-        },
+// ADD TOPIC
+    addTopic: async (parent, args) => {
+    try {
+        const topic = await Topic.create(args);
+        console.log("The topic object is:", topic);
+        return topic;
+    } catch (err) {
+        console.error('Error adding topic:', err);
+        throw new Error('Error adding topic: ' + err.message);
+    }
+},
 
         // UPDATE TOPIC
         updateTopic: async (parent, { id, ...args }) => {
@@ -265,8 +264,31 @@ const resolvers = {
                 return await Post.findByIdAndDelete(id);
             } catch (err) {
                 throw new Error('Error deleting post');
-            }
+            }  
         },
+
+    },
+
+        Topic: { // 🟢 Adding the Topic resolver here
+            clubId: async (parent) => {
+                return await Club.findById(parent.clubId);
+            },
+            authorId: async (parent) => {
+                return await User.findById(parent.authorId);
+            },
+            bookId: async (parent) => {
+                if (parent.bookId) {
+                    const book = await Book.findById(parent.bookId);
+                    if (!book) {
+                        throw new Error(`Book with ID ${parent.bookId} not found`);
+                    }
+                    return book;
+                }
+                return null;
+            },
+            posts: async (parent) => {
+                return await Post.find({ _id: { $in: parent.posts } });
+            },
     },
 };
 

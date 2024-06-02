@@ -5,7 +5,6 @@ const formatDate = (date) => {
     // Example format: "DD/MM/YYYY HH:mm:ss"
     return format(date, "dd/MM/yyyy HH:mm:ss");
 };
-
 module.exports = { formatDate };
 
 
