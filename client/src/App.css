@@ -4,6 +4,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+/* Header, and welcome screen CSS */
+
 }
 nav {
   align-items: center;
@@ -11,6 +14,7 @@ nav {
   padding: 10px;
   justify-content: space-between;
   background-color: #1c1e25;
+  margin-bottom: 20px;
 }
 
 left {
@@ -38,6 +42,9 @@ right ul {
   justify-content: center;
   list-style: none;
 }
+
+/* Welcome Screen CSS */
+
 .body-section {
   display: flex;
   align-items: center;
@@ -49,6 +56,8 @@ right ul {
   margin-left: 15px;
   text-align: center;
 }
+
+/* Login CSS */
 
 .auth-container {
   max-width: 400px;
@@ -104,4 +113,95 @@ p a {
 
 p a:hover {
   text-decoration: underline;
+}
+
+/* DiscussionBoard CSS */
+
+.discussion-board {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+.subscribe-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.subscribe-button:hover {
+  background-color: #0056b3;
+}
+
+.posts {
+  margin-top: 20px;
+}
+
+/* PostForm CSS */
+
+.post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.post-form button {
+  align-self: flex-end;
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.post-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Post CSS */
+
+.post {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: black;
+}
+
+.post p {
+  margin: 0 0 10px;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
 }

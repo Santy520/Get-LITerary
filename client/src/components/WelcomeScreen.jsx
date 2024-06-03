@@ -5,7 +5,7 @@ function WelcomeScreen() {
         <body>
             
   <div className="body-section">
-    <h2 className="body">Welcome Screen</h2>
+    <h1 className="body">Welcome Screen</h1>
     <p className="body-text">
       Hello! welcome to our Project!!!
     </p>
