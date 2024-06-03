@@ -45,8 +45,12 @@ const resolvers = {
         // GET ALL POSTS
         posts: async () => { // Update to fetch posts
             try {
-                return await Post.find({});
+                console.log("getting all posts:",)
+                const getAllPosts= await Post.find({})
+                console.log(getAllPosts);
+                return getAllPosts
             } catch (err) {
+                console.log("seeing an error", err);
                 throw new Error('Error fetching posts');
             }
         },
@@ -242,10 +246,40 @@ const resolvers = {
         // ADD POST
         addPost: async (parent, args) => {
             try {
-                const post = new Post(args);
-                return await post.save();
+                // Debugging logs
+                console.log("Received addPost arguments:", args);
+
+                // Destructure arguments
+                const { topicId, authorId, content } = args;
+
+                // Ensure topicId is provided
+                if (!topicId) {
+                    throw new Error('topicId is required');
+                }
+
+                // Validate topicId
+                const topic = await Topic.findById(topicId);
+                if (!topic) {
+                    throw new Error(`No topic found with ID: ${topicId}`);
+                }
+
+                // Validate authorId
+                const author = await User.findById(authorId);
+                if (!author) {
+                    throw new Error(`No author found with ID: ${authorId}`);
+                }
+
+                // Create and save the post
+                const post = new Post({ topicId, authorId, content });
+                await post.save();
+
+                // Debugging logs
+                console.log("Post created successfully:", post);
+
+                return post;
             } catch (err) {
-                throw new Error('Error adding post');
+                console.error('Error adding post:', err);
+                throw new Error('Error adding post: ' + err.message);
             }
         },
 
@@ -290,6 +324,18 @@ const resolvers = {
                 return await Post.find({ _id: { $in: parent.posts } });
             },
     },
+    
+    Post: { // 🟢 Adding the Post resolver here
+        topicId: async (parent) => {
+            return await Topic.findById(parent.topicId);
+        },
+        authorId: async (parent) => {
+            return await User.findById(parent.authorId);
+        },
+},
+
+
+
 };
 
 module.exports = resolvers;
