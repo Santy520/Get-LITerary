@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js --ignore client",
-    "install": "cd server && npm i && cd ../client && npm i",
+    "install": "cd server && npm i && cd ../client && npm i --production=false",
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm install && npm run build"
