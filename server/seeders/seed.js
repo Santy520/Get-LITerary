@@ -16,7 +16,8 @@ db.once('open', async () => {
       await cleanDb('User', 'Users');
       await cleanDb('Book', 'Books');
       await cleanDb('Club', 'Clubs');
-
+      await cleanDb('Post', 'Posts');      
+      await cleanDb('Topic', 'Topics');
     // Insert users without password hashing -- hashing for login, this is to check if we can seed!
     await User.insertMany(usersSeeds);
 
