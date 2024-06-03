@@ -2,7 +2,7 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql `
     type Book {
-        id: ID!
+        _id: ID!
         title: String!
         author: String!
         summary: String
@@ -10,16 +10,16 @@ const typeDefs = gql `
     }
 
     type Club {
-        id: ID!
+        _id: ID!
         name: String!
         currentBook: Book
         pastBooks: [Book]
         members: [User]
-        discussionTopics: [Topic]
+        topics: [Topic]
     }
 
     type User {
-        id: ID!
+        _id: ID!
         name: String!
         email: String!
         password: String
@@ -27,19 +27,19 @@ const typeDefs = gql `
     }
 
     type Topic {
-        id: ID!
+        _id: ID!
         clubId: Club!
-        title: String!
+        authorId: User!
+        title: String! 
         bookId: Book!
         posts: [Post]
     }
-
     type Post {
-        id: ID!
-        discussionTopicId: Topic!
+        _id: ID!
+        topicId: Topic!
         authorId: User!
         content: String!
-        timestamp: String!
+        createdAt: String
     }
 
     type Auth {
@@ -66,8 +66,8 @@ const typeDefs = gql `
         updateBook(id: ID!, title: String, author: String, summary: String): Book
         deleteBook(id: ID!): Book
 
-        addClub(name: String!, currentBook: ID, pastBooks: [ID], members: [ID], discussionTopics: [ID]): Club
-        updateClub(id: ID!, name: String, currentBook: ID, pastBooks: [ID], members: [ID], discussionTopics: [ID]): Club
+        addClub(name: String!, currentBook: ID, pastBooks: [ID], members: [ID], topics: [ID]): Club
+        updateClub(id: ID!, name: String, currentBook: ID, pastBooks: [ID], members: [ID], topics: [ID]): Club
         deleteClub(id: ID!): Club
 
         addUser(name: String!, email: String!, password: String!, clubs: [ID]): User
@@ -75,12 +75,12 @@ const typeDefs = gql `
         deleteUser(id: ID!): User
         login(email: String!, password: String!): Auth
 
-        addTopic(clubId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
+        addTopic(clubId: ID!, authorId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
         updateTopic(id: ID!, clubId: ID, title: String, bookId: ID, posts: [ID]): Topic
         deleteTopic(id: ID!): Topic
 
-        addPost(discussionTopicId: ID!, authorId: ID!, content: String!): Post
-        updatePost(id: ID!, discussionTopicId: ID, authorId: ID, content: String): Post
+        addPost(topicId: ID!, authorId: ID!, content: String!): Post
+        updatePost(id: ID!, topicId: ID, authorId: ID, content: String): Post
         deletePost(id: ID!): Post
     }
 `;

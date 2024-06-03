@@ -1,28 +1,36 @@
+// Import required modules
+const mongoose = require('mongoose');
 const db = require('../config/connection');
-const seedBooks = require('./seedBooks');
-const seedClubs = require('./seedClubs');
-const seedDiscussions = require('./seedDiscussions');
-const seedUsers = require('./seedUsers');
+const { Book, Club, User } = require('../models');
+const cleanDb = require('./cleanDb');
+// const bcrypt = require('bcrypt');
 
+// Import seeds from JSON files
+ const usersSeeds = require('./usersSeeds.json');
+ const clubSeeds = require('./clubSeeds.json');
+ const bookSeeds = require('./bookSeeds.json');
+ 
 // Define a main function to run all seeders
-const main = async () => {
+db.once('open', async () => {
     try {
-        // Connect to the MongoDB database
-        await db;
+      await cleanDb('User', 'Users');
+      await cleanDb('Book', 'Books');
+      await cleanDb('Club', 'Clubs');
+      await cleanDb('Post', 'Posts');      
+      await cleanDb('Topic', 'Topics');
+    // Insert users without password hashing -- hashing for login, this is to check if we can seed!
+    await User.insertMany(usersSeeds);
 
-        // Call individual seeder functions
-        await seedBooks();
-        await seedClubs();
-        await seedDiscussions();
-        await seedUsers();
+    // // Insert other seed data
+    await Book.insertMany(bookSeeds);
+    await Club.insertMany(clubSeeds);
 
-        console.log('Database seeding completed successfully');
-    } catch (error) {
-        console.error('Error seeding database:', error);
-    } finally {
-        // Close the database connection after seeding
-        db.close();
-    }
-};
-
-main();
+    console.log('all done!');
+    process.exit(0);
+    
+} catch (err) {
+    console.error(err);
+    process.exit(1);
+}
+  });
+  

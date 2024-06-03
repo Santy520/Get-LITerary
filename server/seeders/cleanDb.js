@@ -1,23 +1,19 @@
-// import models
-const Book = require('../models/Book');
-const Club = require('../models/Club');
-const Discussion = require('../models/Discussion');
-const User = require('../models/User');
+const models = require('../models');
+const db = require('../config/connection');
 
-const cleanDB = async () => {
-    try {
-        // Clear existing data from all collections
-        await Promise.all([
-            Book.deleteMany(),
-            Club.deleteMany(),
-            Discussion.deleteMany(),
-            User.deleteMany()
-        ]);
-        
-        console.log('Database cleaned successfully');
-    } catch (error) {
-        console.error('Error cleaning database:', error);
+module.exports = async (modelName) => {
+  try {
+    const collectionName = models[modelName].collection.name;
+    let modelExists = await models[modelName].db.db.listCollections({
+      name: collectionName
+    }).toArray();
+
+    if (modelExists.length) {
+      await models[modelName].collection.drop();
+      console.log(`${modelName} collection dropped`);
     }
+  } catch (err) {
+    console.error(`Error dropping ${modelName} collection: `, err);
+    throw err;
+  }
 };
-
-module.exports = cleanDB;
