@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import PostForm from './PostForm';
-import Post from './Post';
+import PostForm from '../components/PostForm';
+import Post from '../components/Post';
 
   function DiscussionBoard() {
     const [posts, setPosts] = useState([]);
