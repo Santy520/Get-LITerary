@@ -2,6 +2,8 @@ const { User, Book, Club, Topic, Post } = require('../models');
 const { formatDate } = require('../utils/dateFormat');
 const { AuthenticationError } = require('apollo-server-express');  // For handling authentication
 const { signToken } = require('../utils/auth');
+const { authMiddleware } = require('../utils/auth'); // Ensure the path matches the actual file casing
+const bcrypt = require('bcryptjs');
 
 const resolvers = {
     Query: {
@@ -105,39 +107,59 @@ const resolvers = {
 
     Mutation: {
 
-        // ADD USER
+        // ADD USER 🐙 to do : make sure this hashes passwords! add error handling, debugging, defensive code
         addUser: async (parent, { name, email, password }) => {
             try {
-                const user = await User.create({ name, email, password });
-                const token = signToken(user);
+                const user = await User.create({ name, email, password })
+                // console.log("User created:", user)
+                const token = signToken(user); 
+                // Return token and user
                 return { token, user };
             } catch (err) {
+                // Log error
+                console.error('Error adding user:', err);
+                // Throw error with custom message
                 throw new Error('Error adding user: ' + err.message);
             }
         },
 
-        // LOGIN
-        login: async (parent, { email, password }) => {
-            try {
-                const user = await User.findOne({ email });
 
-                if (!user) {
-                    throw new AuthenticationError('No user found with this email address.');
-                }
+        // LOGIN 🐙 - to do : make sure this can handle hashed passwords
+login: async (parent, { email, password }) => {
+    try {
+        // Find user by email
+        const user = await User.findOne({ email });
 
-                const correctPw = await user.isCorrectPassword(password);
+        // If user not found, throw AuthenticationError
+        if (!user) {
+            throw new AuthenticationError('No user found with this email address.');
+        }
 
-                if (!correctPw) {
-                    throw new AuthenticationError('Incorrect password.');
-                }
+        // Check if password is correct
+        const correctPw = await bcrypt.compare(password, user.password);
 
-                const token = signToken(user);
+        // If password is incorrect, throw AuthenticationError
+        if (!correctPw) {
+            throw new AuthenticationError('Incorrect password.');
+        }
 
-                return { token, user };
-            } catch (err) {
-                throw new Error('Error logging in: ' + err.message);
-            }
-        },
+        // Log successful login
+        console.log("User logged in:", user);
+
+        // Generate token
+        const token = signToken(user);
+
+        // Return token and user
+        return { token, user };
+    } catch (err) {
+        // Log error
+        console.error('Error logging in:', err);
+
+        // Throw error with custom message
+        throw new Error('Error logging in: ' + err.message);
+    }
+},
+
 
         // UPDATE USER
         updateUser: async (parent, { id, ...args }) => {

@@ -1,3 +1,4 @@
+// 🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙🐙 check the add user and login for authentication issues
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql `
@@ -70,7 +71,7 @@ const typeDefs = gql `
         updateClub(id: ID!, name: String, currentBook: ID, pastBooks: [ID], members: [ID], topics: [ID]): Club
         deleteClub(id: ID!): Club
 
-        addUser(name: String!, email: String!, password: String!, clubs: [ID]): User
+        addUser(name: String!, email: String!, password: String!, clubs: [ID]): Auth
         updateUser(id: ID!, name: String, email: String, password: String): User
         deleteUser(id: ID!): User
         login(email: String!, password: String!): Auth
