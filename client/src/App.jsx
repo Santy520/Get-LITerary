@@ -14,9 +14,9 @@ function App() {
     <>
       < Header/>
       <Routes>
-        <Route exact path="/" element={<WelcomeScreen />}></Route>
+        <Route exact path="/" element={<Login />}></Route>
+        <Route exact path="/WelcomeScreen" element={<WelcomeScreen />}></Route>
         <Route exact path="/Discussion" element={<DiscussionBoard />}></Route>
-        <Route exact path="/Login" element={<Login />}></Route>
         <Route exact path="/Signup" element={<Signup />}></Route>
         <Route exact path="/PostForm" element={<PostForm />}></Route>
         <Route exact path="/Post" element={<Post />}></Route>
