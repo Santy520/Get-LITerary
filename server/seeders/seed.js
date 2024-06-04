@@ -18,6 +18,8 @@ db.once('open', async () => {
       await cleanDb('Club', 'Clubs');
 
     // Insert users without password hashing -- hashing for login, this is to check if we can seed!
+    // 🧁   ADD PASSWORD HASHING (stretch goalz) 🧁
+
     await User.insertMany(usersSeeds);
 
     // // Insert other seed data
