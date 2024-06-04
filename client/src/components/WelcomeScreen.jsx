@@ -2,7 +2,7 @@ function WelcomeScreen() {
 
 
     return (
-        <body>
+
             
   <div className="body-section">
     <h1 className="body">Welcome Screen</h1>
@@ -11,7 +11,6 @@ function WelcomeScreen() {
     </p>
   </div>
 
-</body> 
         
     )
 }
