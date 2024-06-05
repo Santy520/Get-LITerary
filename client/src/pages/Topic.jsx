@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { GET_TOPICS } from '../utils/queries';
 
-const Topics = () => {
+const Topic = () => {
     const { loading, data, error } = useQuery(GET_TOPICS);
 
     if (loading) {
@@ -40,7 +40,7 @@ const Topics = () => {
     }
 };
 
-export default Topics;
+export default Topic;
 
 // this is a page
 // shows posts

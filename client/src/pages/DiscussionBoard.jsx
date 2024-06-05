@@ -1,5 +1,5 @@
 // client/src/pages/DiscussionBoard.jsx
-import React { useState } from 'react';
+import  { useState } from 'react';
 import PostForm from '../components/PostForm';
 import Post from '../components/Post';
 
