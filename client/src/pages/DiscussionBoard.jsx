@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import PostForm from '../components/PostForm';
 import Post from '../components/Post';
+
 
 function DiscussionBoard() {
   const [posts, setPosts] = useState([]);
@@ -16,7 +18,7 @@ function DiscussionBoard() {
   return (
     <div className="discussion-board">
       <h1>Discussion Board</h1>
-      {/* The subscribe button is removed */}
+     <Link to="/Topic">Topic</Link>
       <PostForm addPost={addPost} />
       <div className="posts">
         {posts.map(post => (
