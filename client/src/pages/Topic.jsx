@@ -41,6 +41,3 @@ const Topic = () => {
 };
 
 export default Topic;
-
-// this is a page
-// shows posts
