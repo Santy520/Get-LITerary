@@ -23,15 +23,15 @@ const Topics = () => {
         return (
             <div>
                 <h1>This is the topics page</h1>
-                <ul>
+                <div>
                     {topics.map((topic) => (
-                        <li key={topic.id}>
+                        <div key={topic.id}>
                             <h2>{topic.title}</h2>
-                            <p>Club: {topic.clubId?.name || 'N/A'}</p>
-                            <p>Book: {topic.bookId?.title || 'N/A'}</p>
-                        </li>
+                            <p>Club: {topic.clubId.name}</p>
+                            <p>Book: {topic.bookId.title}</p>
+                        </div>
                     ))}
-                </ul>
+                </div>
             </div>
         );
     } catch (err) {
@@ -41,3 +41,6 @@ const Topics = () => {
 };
 
 export default Topics;
+
+// this is a page
+// shows posts

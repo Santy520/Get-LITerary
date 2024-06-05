@@ -1,4 +1,5 @@
-import { useState } from 'react';
+// client/src/pages/DiscussionBoard.jsx
+import React { useState } from 'react';
 import PostForm from '../components/PostForm';
 import Post from '../components/Post';
 
@@ -16,7 +17,6 @@ function DiscussionBoard() {
   return (
     <div className="discussion-board">
       <h1>Discussion Board</h1>
-      {/* The subscribe button is removed */}
       <PostForm addPost={addPost} />
       <div className="posts">
         {posts.map(post => (
