@@ -8,10 +8,9 @@ function Header() {
                 <h1 className='left'>Book Club</h1>
 
                 <ul className='right'>
-                    <Link className='link' to="/">Login / </Link>
                     <Link className='link' to="/WelcomeScreen">Welcome Screen / </Link>
-                    <Link className='link' to="/Discussion">Discussion Page </Link>
-
+                    <Link className='link' to="/Discussion">Discussion Page / </Link>
+                    <Link className='link' to="/Profile">Profile 💪</Link>
                 </ul>
 
 
