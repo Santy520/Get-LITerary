@@ -18,12 +18,21 @@ function Login() {
             <FormLabel htmlFor="password">Password</FormLabel>
             <Input type="password" id="password" name="password" required />
           </FormControl>
-          <Button type="submit" colorScheme="teal" width="full" mt={4}>
+          <Button 
+            type="submit" 
+            colorScheme="blue" 
+            width="full" 
+            mt={4} 
+            bgGradient="linear(to-t, blue.400, blue.500)"
+            _hover={{
+              bgGradient: "linear(to-b, blue.300, blue.400)"
+            }}
+          >
             Sign In
           </Button>
         </form>
         <Text mt={4} textAlign="center">
-          Do not have an account? <Link as={RouterLink} to="/signup" color="teal.500">Sign Up</Link>
+          Do not have an account? <Link as={RouterLink} to="/signup" color="blue.500">Sign Up</Link>
         </Text>
       </Box>
     </Box>

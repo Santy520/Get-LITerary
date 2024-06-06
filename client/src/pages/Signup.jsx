@@ -22,12 +22,21 @@ function Signup() {
             <FormLabel htmlFor="password">Password</FormLabel>
             <Input type="password" id="password" name="password" required />
           </FormControl>
-          <Button type="submit" colorScheme="teal" width="full" mt={4}>
+          <Button 
+            type="submit" 
+            colorScheme="blue" 
+            width="full" 
+            mt={4} 
+            bgGradient="linear(to-t, blue.400, blue.500)"
+            _hover={{
+              bgGradient: "linear(to-b, blue.300, blue.400)"
+            }}
+          >
             Sign Up
           </Button>
         </form>
         <Text mt={4} textAlign="center">
-          Already have an account? <Link as={RouterLink} to="/" color="teal.500">Sign In</Link>
+          Already have an account? <Link as={RouterLink} to="/" color="blue.500">Sign In</Link>
         </Text>
       </Box>
     </Box>

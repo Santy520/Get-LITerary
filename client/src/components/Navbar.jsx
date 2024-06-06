@@ -4,7 +4,13 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar() {
   return (
-    <Flex as="nav" p={4} bg="teal.500" color="white">
+    <Flex
+      as="nav"
+      p={4}
+      bgGradient="linear(to-t, blue.600, blue.700)"
+      color="white"
+      alignItems="center"
+    >
       <Box fontSize="xl">Book Club</Box>
       <Spacer />
       <Box>
