@@ -113,20 +113,23 @@ export const GET_CLUBS = gql`
 
 // Topic Queries
 export const GET_TOPIC = gql`
-  query topic($id: ID!) {
-    topic(id: $id) {
+query GET_TOPIC_BY_ID ($id: ID!) {
+  topic(id: $id) {
+    _id
+    title
+    posts {
       _id
-      title
-      clubId {
-        _id
+      authorId {
         name
       }
-      bookId {
-        _id
-        title
-      }
+      content
+      createdAt
+    }
+    clubId {
+      name
     }
   }
+}
 `;
 
 export const GET_TOPICS = gql`

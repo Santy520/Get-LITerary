@@ -17,23 +17,23 @@ const TopicDetails = () => {
         return <div>Loading...</div>;
     }
 
-    if (error) {
-        console.error('Error fetching topic:', error);
-        return <div>Error: {error.message}</div>;
-    }
+    // if (error) {
+    //     console.error('Error fetching topic:', error);
+    //     return <div>Error: {error.message}</div>;
+    // }
 
     const topic = data?.topic;
 
-    if (!topic) {
-        return <div>No topic found</div>;
-    }
+    // if (!topic) {
+    //     return <div>No topic found</div>;
+    // }
 
     const handleAddPost = async (content) => {
         try {
             await addPost({
                 variables: {
                     topicId: id,
-                    authorId: "your-author-id", // Replace this with the actual author ID
+                    // authorId: "665e215946e13a1e4a9b8c07", // Replace this with the actual author ID
                     content,
                 },
                 refetchQueries: [{ query: GET_TOPIC, variables: { id } }],
@@ -51,7 +51,21 @@ const TopicDetails = () => {
                 {topic.bookId && <p><strong>Book:</strong> {topic.bookId.title}</p>}
                 {/* Render other topic details if needed */}
             </div>
-            <PostForm addPost={handleAddPost} />
+            <PostForm addPost={handleAddPost} /> 
+
+            {
+                topic.posts.map(post => {
+                    return (
+                        <div>
+                            <h4>{post.content}</h4>
+                            <h5>{post.authorId.name}</h5>
+                            <h5>{post.createdAt}</h5>
+                            <hr/>
+                        </div>
+                    )
+                })
+            }
+           
         </div>
     );
 };

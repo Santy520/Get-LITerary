@@ -265,13 +265,13 @@ const resolvers = {
         },
 
         // ADD POST
-        addPost: async (parent, args) => {
+        addPost: async (parent, args, context) => {
             try {
                 // Debugging logs
                 console.log("Received addPost arguments:", args);
 
                 // Destructure arguments
-                const { topicId, authorId, content } = args;
+                const { topicId, content } = args;
 
                 // Ensure topicId is provided
                 if (!topicId) {
@@ -285,14 +285,21 @@ const resolvers = {
                 }
 
                 // Validate authorId
-                const author = await User.findById(authorId);
-                if (!author) {
-                    throw new Error(`No author found with ID: ${authorId}`);
-                }
+                // const author = await User.findById(authorId);
+                // if (!author) {
+                //     throw new Error(`No author found with ID: ${authorId}`);
+                // }
 
                 // Create and save the post
-                const post = new Post({ topicId, authorId, content });
+                const post = new Post({ 
+                    topicId, 
+                    authorId: context.user?._id ? context.user?._id : "665e215946e13a1e4a9b8c07", 
+                    content 
+                });
                 await post.save();
+
+                topic.posts.push(post._id)
+                await topic.save();
 
                 // Debugging logs
                 console.log("Post created successfully:", post);

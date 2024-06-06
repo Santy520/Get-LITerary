@@ -188,21 +188,17 @@ export const DELETE_TOPIC = gql`
 
 // Post Mutations
 export const ADD_POST = gql`
-    mutation addPost($topicId: ID!, $authorId: ID!, $content: String!) {
-        addPost(topicId: $topicId, authorId: $authorId, content: $content) {
-            id
-            topicId {
-                id
-                title
-            }
-            authorId {
-                id
-                name
-            }
-            content
-            createdAt
-        }
+mutation ADD_POST($topicId: ID!, $content: String!) {
+    addPost(topicId: $topicId, content: $content) {
+      topicId {
+        _id
+      }
+      authorId {
+        _id
+      }
+      content
     }
+  }
 `;
 
 export const UPDATE_POST = gql`

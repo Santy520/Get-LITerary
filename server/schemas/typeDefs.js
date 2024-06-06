@@ -80,7 +80,7 @@ const typeDefs = gql `
         updateTopic(id: ID!, clubId: ID, title: String, bookId: ID, posts: [ID]): Topic
         deleteTopic(id: ID!): Topic
 
-        addPost(topicId: ID!, authorId: ID!, content: String!): Post
+        addPost(topicId: ID!, content: String!): Post
         updatePost(id: ID!, topicId: ID, authorId: ID, content: String): Post
         deletePost(id: ID!): Post
     }
