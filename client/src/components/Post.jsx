@@ -1,12 +1,17 @@
-import 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { Box, Text, Button, Card, Center } from '@chakra-ui/react'; // Import Chakra UI components
 
 function Post({ post, deletePost }) {
   return (
-    <div className="post">
-      <p>{post.text}</p>
-      <button className="delete-button" onClick={() => deletePost(post.id)}>Delete</button>
-    </div>
+    <Center>
+      <Card className="post" p="4" mb="4" width="50%">
+        <Text mb="4">{post.text}</Text>
+        <Center>
+          <Button colorScheme="red" onClick={() => deletePost(post.id)} px="8" py="4">Delete</Button>
+        </Center>
+      </Card>
+    </Center>
   );
 }
 
