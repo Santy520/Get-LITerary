@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // didn't have this in notes
 import { useState } from 'react';
 import PostForm from '../components/PostForm';
 import Post from '../components/Post';

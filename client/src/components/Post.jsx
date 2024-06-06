@@ -19,3 +19,5 @@ Post.propTypes = {
 };
 
 export default Post;
+
+// there is no query here!!!!
