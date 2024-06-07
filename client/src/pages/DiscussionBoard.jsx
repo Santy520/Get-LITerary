@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // didn't have this in notes
 import { useState } from 'react';
-import { Box, Heading, Center, Card } from '@chakra-ui/react'; // Import Chakra UI components
 import PostForm from '../components/PostForm';
 import Post from '../components/Post';
+
 
 function DiscussionBoard() {
   const [posts, setPosts] = useState([]);
@@ -16,19 +16,16 @@ function DiscussionBoard() {
   };
 
   return (
-    <Center>
-      <Card p="4" width="95%">
-        <Center>
-          <Heading as="h1" size="xl" mb="4">Discussion Board</Heading>
-        </Center>
-        <PostForm addPost={addPost} />
-        <Box className="posts">
-          {posts.map(post => (
-            <Post key={post.id} post={post} deletePost={deletePost} />
-          ))}
-        </Box>
-      </Card>
-    </Center>
+    <div className="discussion-board">
+      <h1>Discussion Board</h1>
+     <Link to="/Topic">Topic</Link>
+      <PostForm addPost={addPost} />
+      <div className="posts">
+        {posts.map(post => (
+          <Post key={post.id} post={post} deletePost={deletePost} />
+        ))}
+      </div>
+    </div>
   );
 }
 

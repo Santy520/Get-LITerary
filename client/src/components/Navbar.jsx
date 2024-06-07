@@ -1,31 +1,24 @@
-import React from 'react';
-import { Box, Flex, Link, Spacer } from '@chakra-ui/react';
-import { NavLink } from 'react-router-dom';
+import { Box, Flex, Link, Button, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const bg = useColorModeValue("gray.100", "gray.900");
+
   return (
-    <Flex
-      as="nav"
-      p={4}
-      bgGradient="linear(to-t, blue.600, blue.700)"
-      color="white"
-      alignItems="center"
-    >
-      <Box fontSize="xl">Book Club</Box>
-      <Spacer />
-      <Box>
-        <Link as={NavLink} to="/" mx={2} _hover={{ textDecoration: 'none' }} color="white">
-          Login
-        </Link>
-        <Link as={NavLink} to="/WelcomeScreen" mx={2} _hover={{ textDecoration: 'none' }} color="white">
-          Welcome Screen
-        </Link>
-        <Link as={NavLink} to="/discussion" mx={2} _hover={{ textDecoration: 'none' }} color="white">
-          Discussion Page
-        </Link>
-      </Box>
-    </Flex>
+    <Box bg={bg} px={4}>
+      <Flex h={16} alignItems="center" justifyContent="space-between">
+        <Flex alignItems="center">
+          <Link as={RouterLink} to="/WelcomeScreen" px={2}>Home</Link>
+          <Link as={RouterLink} to="/Discussion" px={2}>Discussion</Link>
+          <Link as={RouterLink} to="/Profile" px={2}>Profile</Link>
+        </Flex>
+        <Button onClick={toggleColorMode}>
+          {colorMode === "light" ? "Dark" : "Light"} Mode
+        </Button>
+      </Flex>
+    </Box>
   );
-}
+};
 
 export default Navbar;
