@@ -4,9 +4,9 @@ function Header() {
     return (
         <header>
             <nav className="navbar">
-                <h1 className="logo">BOOK CLUB</h1>
+                <Link to="/WelcomeScreen" className="logo">BOOK CLUB</Link>
                 <ul className="nav-links">
-                    <li><Link to="/WelcomeScreen">Welcome Screen</Link></li>
+                    {/* <li><Link to="/WelcomeScreen">Welcome Screen</Link></li> */}
                 </ul>
                 <div className="auth-buttons">
                     <Link to="/" className="login-button">SIGN IN</Link>
@@ -14,7 +14,7 @@ function Header() {
                 </div>
             </nav>
         </header>
-    )
+    );
 }
 
 export default Header;
