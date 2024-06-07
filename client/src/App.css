@@ -1,207 +1,62 @@
-#root {
- 
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-
-/* Header, and welcome screen CSS */
-
-}
-nav {
-  align-items: center;
+.navbar {
   display: flex;
-  padding: 10px;
+  align-items: center;
   justify-content: space-between;
-  background-color: #1c1e25;
-  margin-bottom: 20px;
+  padding: 1rem;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
 }
 
-left {
-  flex-grow: 1;
-  padding: 10px;
+.logo {
+  font-size: 1.5rem;
+  margin-right: auto;
 }
 
-left h1 {
-  font-size: 30px;
-  margin: 0;
-  display: inline;
-  position: relative;
-}
-
-h1 {
-  background-color: lightblue;
-  color: #1c1e25;
-  padding: 5px 20px;
-  position: relative;
-  margin-left: 20px;
-}
-
-right ul {
+.nav-links, .auth-buttons {
   display: flex;
-  justify-content: center;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-/* Welcome Screen CSS */
-
-.body-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-.body-text {
-  flex: 1;
-  margin-left: 15px;
-  text-align: center;
+.nav-links li, .auth-buttons > * {
+  margin-right: 1rem;
 }
 
-/* Login CSS */
-
-.auth-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.auth-container h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-p {
-  text-align: center;
-}
-
-p a {
-  color: #007BFF;
+.nav-links li a, .auth-buttons > * {
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
-p a:hover {
-  text-decoration: underline;
+.nav-links li a:hover, .auth-buttons > *:hover {
+  color: #ffffff;
 }
 
-/* DiscussionBoard CSS */
-
-.discussion-board {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  text-align: center;
-}
-
-.subscribe-button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  background-color: #007BFF;
-  color: white;
+.signup-button {
+  background-color: #208e83;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.subscribe-button:hover {
-  background-color: #0056b3;
-}
-
-.posts {
-  margin-top: 20px;
-}
-
-/* PostForm CSS */
-
-.post-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.post-form button {
-  align-self: flex-end;
-  padding: 10px 20px;
-  background-color: #007BFF;
-  color: white;
+.login-button{
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.post-form button:hover {
-  background-color: #0056b3;
+.signup-button:hover {
+  background-color: #10655c;
 }
 
-/* Post CSS */
-
-.post {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: black;
-}
-
-.post p {
-  margin: 0 0 10px;
-}
-
-.delete-button {
-  padding: 5px 10px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.delete-button:hover {
-  background-color: #c82333;
+.login-button:hover {
+  background-color: #ffffff;
+  color: #000;
 }

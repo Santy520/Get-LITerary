@@ -18,7 +18,7 @@ import Profile from './pages/Profile'
 import Topic from './pages/Topic'
 import TopicDetails from './pages/TopicDetails'
 import { Routes, Route } from 'react-router-dom'
-// import './App.css'
+import './App.css'
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
