@@ -17,6 +17,7 @@ import ErrorPage from './pages/ErrorPage'
 import Profile from './pages/Profile'
 import Topic from './pages/Topic'
 import TopicDetails from './pages/TopicDetails'
+import Footer from './components/Footer';
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 
@@ -61,6 +62,7 @@ function App() {
         <Route exact path="/Topic/:id" element={<TopicDetails />}></Route>
         <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for undefined paths */}
       </Routes>
+      <Footer />
       </ApolloProvider>
     </>
   );
