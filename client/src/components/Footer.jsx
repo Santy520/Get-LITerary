@@ -1,4 +1,5 @@
-import { Box, Flex, Heading, Text, Input, Textarea, Button, Link } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text, Input, Textarea, Button, Link, Icon } from '@chakra-ui/react';
+import { AiFillFacebook, AiFillTwitterSquare, AiFillInstagram } from 'react-icons/ai'; // Import Chakra UI icons
 
 function Footer() {
     return (
@@ -28,9 +29,9 @@ function Footer() {
             <Flex justifyContent="space-between" maxW="1200px" mx="auto" mt={8} alignItems="center">
                 <Text>&copy; 2024 Book Club | Designed by TEAM_1</Text>
                 <Box>
-                    <Link href="#">Facebook</Link>
-                    <Link href="#">Twitter</Link>
-                    <Link href="#">Instagram</Link>
+                    <Link href="#"><Icon as={AiFillFacebook} boxSize={6} /></Link>
+                    <Link href="#"><Icon as={AiFillTwitterSquare} boxSize={6} /></Link>
+                    <Link href="#"><Icon as={AiFillInstagram} boxSize={6} /></Link>
                 </Box>
             </Flex>
         </Box>
