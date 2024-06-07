@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Flex, Heading, Text, Button, Image } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import welcomeImage from '../assets/bg_welcome_screen.png';
+import GetAppSection from '../components/GetApp'; 
+
 
 function WelcomeScreen() {
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function WelcomeScreen() {
 
   return (
     <Box 
-      bg="gray.100"
+      bgGradient="linear(to-l, white, gray.100)"
       minH="100vh"
       display="flex"
       flexDirection="column"
@@ -46,6 +48,8 @@ function WelcomeScreen() {
           />
         </Box>
       </Flex>
+      {/* Render the GetAppSection component only on the WelcomeScreen */}
+      <GetAppSection />
     </Box>
   );
 }

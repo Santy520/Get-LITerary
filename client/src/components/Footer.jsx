@@ -28,10 +28,22 @@ function Footer() {
             </Flex>
             <Flex justifyContent="space-between" maxW="1200px" mx="auto" mt={8} alignItems="center">
                 <Text>&copy; 2024 Book Club | Designed by TEAM_1</Text>
-                <Box>
-                    <Link href="#"><Icon as={AiFillFacebook} boxSize={6} /></Link>
-                    <Link href="#"><Icon as={AiFillTwitterSquare} boxSize={6} /></Link>
-                    <Link href="#"><Icon as={AiFillInstagram} boxSize={6} /></Link>
+                <Box display="flex" alignItems="center">
+                    <Link href="#" mx={2}>
+                        <Box bg="teal.500" borderRadius="full" p={2}>
+                            <Icon as={AiFillFacebook} boxSize={10} />
+                        </Box>
+                    </Link>
+                    <Link href="#" mx={2}>
+                        <Box bg="teal.500" borderRadius="full" p={2}>
+                            <Icon as={AiFillTwitterSquare} boxSize={10} />
+                        </Box>
+                    </Link>
+                    <Link href="#" mx={2}>
+                        <Box bg="teal.500" borderRadius="full" p={2}>
+                            <Icon as={AiFillInstagram} boxSize={10} />
+                        </Box>
+                    </Link>
                 </Box>
             </Flex>
         </Box>

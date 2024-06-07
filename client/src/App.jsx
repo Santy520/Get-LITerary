@@ -5,21 +5,22 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import { Routes, Route } from 'react-router-dom';
+import './App.css';
 
-import WelcomeScreen from './pages/WelcomeScreen'
-import DiscussionBoard from './pages/DiscussionBoard'
-import Header from './components/Header'
-import Login from './pages/Login'
-import Signup from './pages/Signup'
-import PostForm from './components/PostForm'
-import Post from './components/Post'
-import ErrorPage from './pages/ErrorPage'
-import Profile from './pages/Profile'
-import Topic from './pages/Topic'
-import TopicDetails from './pages/TopicDetails'
+import WelcomeScreen from './pages/WelcomeScreen';
+import DiscussionBoard from './pages/DiscussionBoard';
+import Header from './components/Header';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import PostForm from './components/PostForm';
+import Post from './components/Post';
+import ErrorPage from './pages/ErrorPage';
+import Profile from './pages/Profile';
+import Topic from './pages/Topic';
+import TopicDetails from './pages/TopicDetails';
 import Footer from './components/Footer';
-import { Routes, Route } from 'react-router-dom'
-import './App.css'
+// import GetAppSection from './components/GetApp'; // Import the GetAppSection component
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -47,26 +48,24 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <> 
-        <ApolloProvider client={client}> 
+    <ApolloProvider client={client}>
       <Header />
       <Routes>
-        <Route exact path="/" element={<Login />}></Route>
-        <Route exact path="/WelcomeScreen" element={<WelcomeScreen />}></Route>
-        <Route exact path="/Discussion" element={<DiscussionBoard />}></Route>
-        <Route exact path="/Signup" element={<Signup />}></Route>
-        <Route exact path="/PostForm" element={<PostForm />}></Route>
-        <Route exact path="/Post" element={<Post />}></Route>
-        <Route exact path="/Profile" element={<Profile />}></Route>
-        <Route exact path="/Topic" element={<Topic />}></Route>
-        <Route exact path="/Topic/:id" element={<TopicDetails />}></Route>
+        <Route exact path="/" element={<Login />} />
+        <Route exact path="/WelcomeScreen" element={<WelcomeScreen />} />
+        <Route exact path="/Discussion" element={<DiscussionBoard />} />
+        <Route exact path="/Signup" element={<Signup />} />
+        <Route exact path="/PostForm" element={<PostForm />} />
+        <Route exact path="/Post" element={<Post />} />
+        <Route exact path="/Profile" element={<Profile />} />
+        <Route exact path="/Topic" element={<Topic />} />
+        <Route exact path="/Topic/:id" element={<TopicDetails />} />
         <Route path="*" element={<ErrorPage />} /> {/* Catch-all route for undefined paths */}
       </Routes>
+      {/* <GetAppSection />  */}
       <Footer />
-      </ApolloProvider>
-    </>
+    </ApolloProvider>
   );
 }
 
 export default App;
-
