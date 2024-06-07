@@ -4,11 +4,11 @@ import { gql } from '@apollo/client';
 export const GET_USER = gql`
   query user($id: ID!) {
     user(id: $id) {
-      id
+      _id
       name
       email
       clubs {
-        id
+        _id
         name
       }
     }
@@ -18,11 +18,11 @@ export const GET_USER = gql`
 export const GET_USERS = gql`
   query users {
     users {
-      id
+      _id
       name
       email
       clubs {
-        id
+        _id
         name
       }
     }
@@ -33,12 +33,12 @@ export const GET_USERS = gql`
 export const GET_BOOK = gql`
   query book($id: ID!) {
     book(id: $id) {
-      id
+      _id
       title
       author
       summary
       clubs {
-        id
+        _id
         name
       }
     }
@@ -48,12 +48,12 @@ export const GET_BOOK = gql`
 export const GET_BOOKS = gql`
   query books {
     books {
-      id
+      _id
       title
       author
       summary
       clubs {
-        id
+        _id
         name
       }
     }
@@ -64,22 +64,22 @@ export const GET_BOOKS = gql`
 export const GET_CLUB = gql`
   query club($id: ID!) {
     club(id: $id) {
-      id
+      _id
       name
       currentBook {
-        id
+        _id
         title
       }
       pastBooks {
-        id
+        _id
         title
       }
       members {
-        id
+        _id
         name
       }
       topics {
-        id
+        _id
         title
       }
     }
@@ -89,22 +89,22 @@ export const GET_CLUB = gql`
 export const GET_CLUBS = gql`
   query clubs {
     clubs {
-      id
+      _id
       name
       currentBook {
-        id
+        _id
         title
       }
       pastBooks {
-        id
+        _id
         title
       }
       members {
-        id
+        _id
         name
       }
       topics {
-        id
+        _id
         title
       }
     }
@@ -113,33 +113,36 @@ export const GET_CLUBS = gql`
 
 // Topic Queries
 export const GET_TOPIC = gql`
-  query topic($id: ID!) {
-    topic(id: $id) {
-      id
-      title
-      clubId {
-        id
+query GET_TOPIC_BY_ID ($id: ID!) {
+  topic(id: $id) {
+    _id
+    title
+    posts {
+      _id
+      authorId {
         name
       }
-      bookId {
-        id
-        title
-      }
+      content
+      createdAt
+    }
+    clubId {
+      name
     }
   }
+}
 `;
 
 export const GET_TOPICS = gql`
   query topics {
     topics {
-      id
+      _id
       title
       clubId {
-        id
+        _id
         name
       }
       bookId {
-        id
+        _id
         title
       }
     }
@@ -150,14 +153,14 @@ export const GET_TOPICS = gql`
 export const GET_POST = gql`
   query post($id: ID!) {
     post(id: $id) {
-      id
+      _id
       content
       topicId {
-        id
+        _id
         title
       }
       authorId {
-        id
+        _id
         name
       }
     }
@@ -167,14 +170,14 @@ export const GET_POST = gql`
 export const GET_POSTS = gql`
   query posts {
     posts {
-      id
+      _id
       content
       topicId {
-        id
+        _id
         title
       }
       authorId {
-        id
+        _id
         name
       }
     }

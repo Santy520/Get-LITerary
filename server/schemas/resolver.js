@@ -35,22 +35,26 @@ const resolvers = {
         },
 
         // GET ALL TOPICS
-        topics: async () => { // Update to fetch topics
-            try {
-                console.log("The topics are ", await Topic.find({}))
-                return await Topic.find({});
-            } catch (err) {
-                throw new Error('Error fetching topics');
-            }
+        topics: async () => {
+            return await Topic.find();
+            // return [
+            //     {
+            //         _id: '1',
+            //         title: 'Topic 1',
+            //         clubId: { _id: '1', name: 'Club 1' },
+            //         bookId: { _id: '1', title: 'Book 1' },
+            //     },
+            //     // other topics
+            // ];
         },
 
         // GET ALL POSTS
         posts: async () => { // Update to fetch posts
             try {
-                console.log("getting all posts:",)
-                const getAllPosts= await Post.find({})
+                console.log("getting all posts:");
+                const getAllPosts = await Post.find({});
                 console.log(getAllPosts);
-                return getAllPosts
+                return getAllPosts;
             } catch (err) {
                 console.log("seeing an error", err);
                 throw new Error('Error fetching posts');
@@ -96,21 +100,18 @@ const resolvers = {
         // GET POST BY ID
         post: async (parent, { id }) => {
             try {
-                 return await Post.findById(id);
+                return await Post.findById(id);
             } catch (err) {
                 throw new Error('Error fetching post');
             }
-     },
+        },
     },
 
-    
-
     Mutation: {
-
         // ADD USER 🐙 to do : make sure this hashes passwords! add error handling, debugging, defensive code
         addUser: async (parent, { name, email, password }) => {
             try {
-                const user = await User.create({ name, email, password })
+                const user = await User.create({ name, email, password });
                 // console.log("User created:", user)
                 const token = signToken(user); 
                 // Return token and user
@@ -123,43 +124,41 @@ const resolvers = {
             }
         },
 
-
         // LOGIN 🐙 - to do : make sure this can handle hashed passwords
-login: async (parent, { email, password }) => {
-    try {
-        // Find user by email
-        const user = await User.findOne({ email });
+        login: async (parent, { email, password }) => {
+            try {
+                // Find user by email
+                const user = await User.findOne({ email });
 
-        // If user not found, throw AuthenticationError
-        if (!user) {
-            throw new AuthenticationError('No user found with this email address.');
-        }
+                // If user not found, throw AuthenticationError
+                if (!user) {
+                    throw new AuthenticationError('No user found with this email address.');
+                }
 
-        // Check if password is correct
-        const correctPw = await bcrypt.compare(password, user.password);
+                // Check if password is correct
+                const correctPw = await bcrypt.compare(password, user.password);
 
-        // If password is incorrect, throw AuthenticationError
-        if (!correctPw) {
-            throw new AuthenticationError('Incorrect password.');
-        }
+                // If password is incorrect, throw AuthenticationError
+                if (!correctPw) {
+                    throw new AuthenticationError('Incorrect password.');
+                }
 
-        // Log successful login
-        console.log("User logged in:", user);
+                // Log successful login
+                console.log("User logged in:", user);
 
-        // Generate token
-        const token = signToken(user);
+                // Generate token
+                const token = signToken(user);
 
-        // Return token and user
-        return { token, user };
-    } catch (err) {
-        // Log error
-        console.error('Error logging in:', err);
+                // Return token and user
+                return { token, user };
+            } catch (err) {
+                // Log error
+                console.error('Error logging in:', err);
 
-        // Throw error with custom message
-        throw new Error('Error logging in: ' + err.message);
-    }
-},
-
+                // Throw error with custom message
+                throw new Error('Error logging in: ' + err.message);
+            }
+        },
 
         // UPDATE USER
         updateUser: async (parent, { id, ...args }) => {
@@ -235,17 +234,17 @@ login: async (parent, { email, password }) => {
             }
         },
 
-// ADD TOPIC
-    addTopic: async (parent, args) => {
-    try {
-        const topic = await Topic.create(args);
-        console.log("The topic object is:", topic);
-        return topic;
-    } catch (err) {
-        console.error('Error adding topic:', err);
-        throw new Error('Error adding topic: ' + err.message);
-    }
-},
+        // ADD TOPIC
+        addTopic: async (parent, args) => {
+            try {
+                const topic = await Topic.create(args);
+                console.log("The topic object is:", topic);
+                return topic;
+            } catch (err) {
+                console.error('Error adding topic:', err);
+                throw new Error('Error adding topic: ' + err.message);
+            }
+        },
 
         // UPDATE TOPIC
         updateTopic: async (parent, { id, ...args }) => {
@@ -266,13 +265,13 @@ login: async (parent, { email, password }) => {
         },
 
         // ADD POST
-        addPost: async (parent, args) => {
+        addPost: async (parent, args, context) => {
             try {
                 // Debugging logs
                 console.log("Received addPost arguments:", args);
 
                 // Destructure arguments
-                const { topicId, authorId, content } = args;
+                const { topicId, content } = args;
 
                 // Ensure topicId is provided
                 if (!topicId) {
@@ -286,14 +285,21 @@ login: async (parent, { email, password }) => {
                 }
 
                 // Validate authorId
-                const author = await User.findById(authorId);
-                if (!author) {
-                    throw new Error(`No author found with ID: ${authorId}`);
-                }
+                // const author = await User.findById(authorId);
+                // if (!author) {
+                //     throw new Error(`No author found with ID: ${authorId}`);
+                // }
 
                 // Create and save the post
-                const post = new Post({ topicId, authorId, content });
+                const post = new Post({ 
+                    topicId, 
+                    authorId: context.user?._id ? context.user?._id : "665e215946e13a1e4a9b8c07", 
+                    content 
+                });
                 await post.save();
+
+                topic.posts.push(post._id)
+                await topic.save();
 
                 // Debugging logs
                 console.log("Post created successfully:", post);
@@ -320,31 +326,30 @@ login: async (parent, { email, password }) => {
                 return await Post.findByIdAndDelete(id);
             } catch (err) {
                 throw new Error('Error deleting post');
-            }  
+            }
         },
-
     },
 
-        Topic: { // 🟢 Adding the Topic resolver here
-            clubId: async (parent) => {
-                return await Club.findById(parent.clubId);
-            },
-            authorId: async (parent) => {
-                return await User.findById(parent.authorId);
-            },
-            bookId: async (parent) => {
-                if (parent.bookId) {
-                    const book = await Book.findById(parent.bookId);
-                    if (!book) {
-                        throw new Error(`Book with ID ${parent.bookId} not found`);
-                    }
-                    return book;
+    Topic: { // 🟢 Adding the Topic resolver here
+        clubId: async (parent) => {
+            return await Club.findById(parent.clubId);
+        },
+        authorId: async (parent) => {
+            return await User.findById(parent.authorId);
+        },
+        bookId: async (parent) => {
+            if (parent.bookId) {
+                const book = await Book.findById(parent.bookId);
+                if (!book) {
+                    throw new Error(`Book with ID ${parent.bookId} not found`);
                 }
-                return null;
-            },
-            posts: async (parent) => {
-                return await Post.find({ _id: { $in: parent.posts } });
-            },
+                return book;
+            }
+            return null;
+        },
+        posts: async (parent) => {
+            return await Post.find({ _id: { $in: parent.posts } });
+        },
     },
     
     Post: { // 🟢 Adding the Post resolver here
@@ -354,10 +359,7 @@ login: async (parent, { email, password }) => {
         authorId: async (parent) => {
             return await User.findById(parent.authorId);
         },
-},
-
-
-
+    },
 };
 
 module.exports = resolvers;

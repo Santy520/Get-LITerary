@@ -6,11 +6,11 @@ export const ADD_USER = gql`
         addUser(name: $name, email: $email, password: $password, clubs: $clubs) {
             token
             user {
-                id
+                _id
                 name
                 email
                 clubs {
-                    id
+                    _id
                     name
                 }
             }
@@ -18,16 +18,16 @@ export const ADD_USER = gql`
     }
 `;
 
-export const LOGIN = gql`
+export const LOGIN_USER = gql`
     mutation login($email: String!, $password: String!) {
         login(email: $email, password: $password) {
             token
             user {
-                id
+                _id
                 name
                 email
                 clubs {
-                    id
+                    _id
                     name
                 }
             }
@@ -38,11 +38,11 @@ export const LOGIN = gql`
 export const UPDATE_USER = gql`
     mutation updateUser($id: ID!, $name: String, $email: String, $password: String) {
         updateUser(id: $id, name: $name, email: $email, password: $password) {
-            id
+            _id
             name
             email
             clubs {
-                id
+                _id
                 name
             }
         }
@@ -52,7 +52,7 @@ export const UPDATE_USER = gql`
 export const DELETE_USER = gql`
     mutation deleteUser($id: ID!) {
         deleteUser(id: $id) {
-            id
+            _id
         }
     }
 `;
@@ -61,12 +61,12 @@ export const DELETE_USER = gql`
 export const ADD_BOOK = gql`
     mutation addBook($title: String!, $author: String!, $summary: String, $clubs: [ID]) {
         addBook(title: $title, author: $author, summary: $summary, clubs: $clubs) {
-            id
+            _id
             title
             author
             summary
             clubs {
-                id
+                _id
                 name
             }
         }
@@ -76,7 +76,7 @@ export const ADD_BOOK = gql`
 export const UPDATE_BOOK = gql`
     mutation updateBook($id: ID!, $title: String, $author: String, $summary: String) {
         updateBook(id: $id, title: $title, author: $author, summary: $summary) {
-            id
+            _id
             title
             author
             summary
@@ -87,7 +87,7 @@ export const UPDATE_BOOK = gql`
 export const DELETE_BOOK = gql`
     mutation deleteBook($id: ID!) {
         deleteBook(id: $id) {
-            id
+            _id
         }
     }
 `;
@@ -96,7 +96,7 @@ export const DELETE_BOOK = gql`
 export const ADD_CLUB = gql`
     mutation addClub($name: String!) {
         addClub(name: $name) {
-            id
+            _id
             name
         }
     }
@@ -105,22 +105,22 @@ export const ADD_CLUB = gql`
 export const UPDATE_CLUB = gql`
     mutation updateClub($id: ID!, $name: String, $currentBook: ID, $pastBooks: [ID], $members: [ID], $topics: [ID]) {
         updateClub(id: $id, name: $name, currentBook: $currentBook, pastBooks: $pastBooks, members: $members, topics: $topics) {
-            id
+            _id
             name
             currentBook {
-                id
+                _id
                 title
             }
             pastBooks {
-                id
+                _id
                 title
             }
             members {
-                id
+                _id
                 name
             }
             topics {
-                id
+                _id
                 title
             }
         }
@@ -130,7 +130,7 @@ export const UPDATE_CLUB = gql`
 export const DELETE_CLUB = gql`
     mutation deleteClub($id: ID!) {
         deleteClub(id: $id) {
-            id
+            _id
         }
     }
 `;
@@ -139,18 +139,18 @@ export const DELETE_CLUB = gql`
 export const ADD_TOPIC = gql`
     mutation addTopic($clubId: ID!, $title: String!, $bookId: ID!, $posts: [ID]) {
         addTopic(clubId: $clubId, title: $title, bookId: $bookId, posts: $posts) {
-            id
+            _id
             clubId {
-                id
+                _id
                 name
             }
             title
             bookId {
-                id
+                _id
                 title
             }
             posts {
-                id
+                _id
                 content
             }
         }
@@ -160,18 +160,18 @@ export const ADD_TOPIC = gql`
 export const UPDATE_TOPIC = gql`
     mutation updateTopic($id: ID!, $clubId: ID, $title: String, $bookId: ID, $posts: [ID]) {
         updateTopic(id: $id, clubId: $clubId, title: $title, bookId: $bookId, posts: $posts) {
-            id
+            _id
             clubId {
-                id
+                _id
                 name
             }
             title
             bookId {
-                id
+                _id
                 title
             }
             posts {
-                id
+                _id
                 content
             }
         }
@@ -181,40 +181,36 @@ export const UPDATE_TOPIC = gql`
 export const DELETE_TOPIC = gql`
     mutation deleteTopic($id: ID!) {
         deleteTopic(id: $id) {
-            id
+            _id
         }
     }
 `;
 
 // Post Mutations
 export const ADD_POST = gql`
-    mutation addPost($topicId: ID!, $authorId: ID!, $content: String!) {
-        addPost(topicId: $topicId, authorId: $authorId, content: $content) {
-            id
-            topicId {
-                id
-                title
-            }
-            authorId {
-                id
-                name
-            }
-            content
-            createdAt
-        }
+mutation ADD_POST($topicId: ID!, $content: String!) {
+    addPost(topicId: $topicId, content: $content) {
+      topicId {
+        _id
+      }
+      authorId {
+        _id
+      }
+      content
     }
+  }
 `;
 
 export const UPDATE_POST = gql`
     mutation updatePost($id: ID!, $topicId: ID, $authorId: ID, $content: String) {
         updatePost(id: $id, topicId: $topicId, authorId: $authorId, content: $content) {
-            id
+            _id
             topicId {
-                id
+                _id
                 title
             }
             authorId {
-                id
+                _id
                 name
             }
             content
@@ -226,7 +222,7 @@ export const UPDATE_POST = gql`
 export const DELETE_POST = gql`
     mutation deletePost($id: ID!) {
         deletePost(id: $id) {
-            id
+            _id
         }
     }
 `;

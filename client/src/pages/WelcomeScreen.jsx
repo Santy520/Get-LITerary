@@ -22,4 +22,4 @@ function WelcomeScreen() {
   );
 }
 
-export default WelcomeScreen;
+export default WelcomeScreen

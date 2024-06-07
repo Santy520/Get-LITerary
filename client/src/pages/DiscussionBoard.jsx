@@ -1,4 +1,4 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Box, Heading, Center, Card } from '@chakra-ui/react'; // Import Chakra UI components
 import PostForm from '../components/PostForm';
