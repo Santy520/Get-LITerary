@@ -23,7 +23,7 @@ function Login() {
         </Box>
         <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={8}>
           <Heading as="h2" size="lg" mb={6} textAlign="center">
-            Login
+            SIGN IN 
           </Heading>
           <form>
             <FormControl mb={4}>

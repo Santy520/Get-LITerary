@@ -23,7 +23,7 @@ function Signup() {
         </Box>
         <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={8}>
           <Heading as="h2" size="lg" mb={6} textAlign="center">
-            Sign Up
+            SIGN UP
           </Heading>
           <form>
             <FormControl mb={4}>

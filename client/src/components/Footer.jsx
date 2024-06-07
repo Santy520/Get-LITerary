@@ -3,7 +3,7 @@ import { AiFillFacebook, AiFillTwitterSquare, AiFillInstagram } from 'react-icon
 
 function Footer() {
     return (
-        <Box as="footer" bg="teal.500" color="white" py={12}>
+        <Box as="footer" bgGradient="linear(to-b, blue.800, blue.900)" color="white" py={12}>
             <Flex justifyContent="space-between" maxW="1200px" mx="auto" flexWrap="wrap">
                 <Box flex="1" mr={{ base: 0, md: 8 }} mb={{ base: 8, md: 0 }}>
                     <Heading as="h2" mb={4}>About</Heading>
@@ -30,17 +30,17 @@ function Footer() {
                 <Text>&copy; 2024 Book Club | Designed by TEAM_1</Text>
                 <Box display="flex" alignItems="center">
                     <Link href="#" mx={2}>
-                        <Box bg="teal.500" borderRadius="full" p={2}>
+                        <Box bg="blue.900" borderRadius="full" p={2}>
                             <Icon as={AiFillFacebook} boxSize={10} />
                         </Box>
                     </Link>
                     <Link href="#" mx={2}>
-                        <Box bg="teal.500" borderRadius="full" p={2}>
+                        <Box bg="blue.900" borderRadius="full" p={2}>
                             <Icon as={AiFillTwitterSquare} boxSize={10} />
                         </Box>
                     </Link>
                     <Link href="#" mx={2}>
-                        <Box bg="teal.500" borderRadius="full" p={2}>
+                        <Box bg="blue.900" borderRadius="full" p={2}>
                             <Icon as={AiFillInstagram} boxSize={10} />
                         </Box>
                     </Link>
