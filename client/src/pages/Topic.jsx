@@ -68,7 +68,7 @@ const Topic = () => {
                     <div>No topics available</div>
                 ) : (
                     topics.map((topic) => (
-                        <a href={`/topic/${topic.id}`} key={topic.id}>
+                        <a href={`/topic/${topic._id}`} key={topic._id}>
                             <div>
                                 <h2>{topic.title}</h2>
                                 <p>Club: {topic.clubId.name}</p>
