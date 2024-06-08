@@ -14,7 +14,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import Auth from '../utils/auth';
-import loginImage from '../assets/login.png'; 
+import loginImage from '../assets/login.png';
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -47,23 +47,23 @@ const Login = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100vh" bg="gray.50">
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bg="gray.50" p={{ base: 4, md: 8 }} mt={{ base: 4, md: 0 }}>
       <Box
         display="flex"
         flexDirection={{ base: 'column', md: 'row' }}
-        p={8}
+        p={{ base: 4, md: 8 }}
         width="100%"
         maxWidth="1200px"
         borderWidth={1}
         borderRadius={8}
         boxShadow="lg"
         bg="white"
-        height="80vh"
+        minHeight={{ base: 'auto', md: '80vh' }}
       >
-        <Box flex="1" display="flex" justifyContent="center" alignItems="center">
-          <Image src={loginImage} alt="Login Image" borderRadius="md" boxShadow="md" />
+        <Box flex="1" display="flex" justifyContent="center" alignItems="center" mb={{ base: 8, md: 0 }}>
+          <Image src={loginImage} alt="Login Image" borderRadius="md" boxShadow="1px" maxW={{ base: '100%', md: '500px' }} />
         </Box>
-        <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={8}>
+        <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={{ base: 4, md: 8 }}>
           <Heading as="h2" size="lg" mb={6} textAlign="center">
             SIGN IN
           </Heading>

@@ -1,10 +1,17 @@
 import { Box, Flex, Heading, Text, Input, Textarea, Button, Link, Icon } from '@chakra-ui/react';
-import { AiFillFacebook, AiFillTwitterSquare, AiFillInstagram } from 'react-icons/ai'; // Import Chakra UI icons
+import { AiFillFacebook, AiFillTwitterSquare, AiFillInstagram } from 'react-icons/ai';
 
 function Footer() {
     return (
         <Box as="footer" bgGradient="linear(to-b, blue.800, blue.900)" color="white" py={12}>
-            <Flex justifyContent="space-between" maxW="1200px" mx="auto" flexWrap="wrap">
+            <Flex
+                justifyContent="space-between"
+                maxW="1200px"
+                mx="auto"
+                flexWrap="wrap"
+                flexDirection={{ base: 'column', md: 'row' }}
+                alignItems={{ base: 'flex-start', md: 'center' }}
+            >
                 <Box flex="1" mr={{ base: 0, md: 8 }} mb={{ base: 8, md: 0 }}>
                     <Heading as="h2" mb={4}>About</Heading>
                     <Text>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente ratione illo, fugiat vero vel 
@@ -26,9 +33,17 @@ function Footer() {
                     </Box>
                 </Box>
             </Flex>
-            <Flex justifyContent="space-between" maxW="1200px" mx="auto" mt={8} alignItems="center">
-                <Text>&copy; 2024 Book Club | Designed by TEAM_1</Text>
-                <Box display="flex" alignItems="center">
+            <Flex
+                justifyContent="space-between"
+                maxW="1200px"
+                mx="auto"
+                mt={8}
+                alignItems="center"
+                flexDirection={{ base: 'column', md: 'row' }}
+                textAlign={{ base: 'center', md: 'left' }}
+            >
+                <Text mb={{ base: 4, md: 0 }}>&copy; 2024 Book Club | Designed by TEAM_1</Text>
+                <Box display="flex" alignItems="center" justifyContent={{ base: 'center', md: 'flex-end' }}>
                     <Link href="#" mx={2}>
                         <Box bg="blue.900" borderRadius="full" p={2}>
                             <Icon as={AiFillFacebook} boxSize={10} />

@@ -14,7 +14,7 @@ import {
   Image,
 } from '@chakra-ui/react';
 import Auth from '../utils/auth';
-import SignupImage from '../assets/signup.png'; // Ensure this path is correct
+import SignupImage from '../assets/signup.png';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -47,23 +47,23 @@ const Signup = () => {
   };
 
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" height="100vh" bg="gray.50" p={4}>
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bg="gray.50" p={{ base: 4, md: 8 }} mt={{ base: 4, md: 0 }}>
       <Box
         display="flex"
         flexDirection={{ base: 'column', md: 'row' }}
-        p={8}
+        p={{ base: 4, md: 8 }}
         width="100%"
         maxWidth="1200px"
         borderWidth={1}
         borderRadius={8}
         boxShadow="lg"
         bg="white"
-        height="80vh"
+        minHeight={{ base: 'auto', md: '80vh' }}
       >
-        <Box flex="1" display="flex" justifyContent="center" alignItems="center">
-          <Image src={SignupImage} alt="Signup Image" borderRadius="md" boxShadow="md" width="80%" height="80%" />
+        <Box flex="1" display="flex" justifyContent="center" alignItems="center" mb={{ base: 8, md: 0 }}>
+          <Image src={SignupImage} alt="Signup Image" borderRadius="md" boxShadow="1px" maxW={{ base: '100%', md: '400px' }} />
         </Box>
-        <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={8}>
+        <Box flex="1" display="flex" flexDirection="column" justifyContent="center" p={{ base: 4, md: 8 }}>
           <Heading as="h2" size="lg" mb={6} textAlign="center">
             SIGN UP
           </Heading>
@@ -133,7 +133,7 @@ const Signup = () => {
           )}
           <Text mt={4} textAlign="center">
             Already have an account?{' '}
-            <Link as={RouterLink} to="/login" color="blue.500">
+            <Link as={RouterLink} to="/" color="blue.500">
               Sign In
             </Link>
           </Text>
