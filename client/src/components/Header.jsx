@@ -1,22 +1,20 @@
 import { Link } from 'react-router-dom';
+
 function Header() {
-
-
     return (
         <header>
-            <nav>
-                <h1 className='left'>Book Club</h1>
-
-                <ul className='right'>
-                    <Link className='link' to="/WelcomeScreen">Welcome Screen / </Link>
-                    <Link className='link' to="/Topic">Topic Page / </Link>
-                    <Link className='link' to="/Profile">Profile 💪</Link>
+            <nav className="navbar">
+                <Link to="/WelcomeScreen" className="logo">BOOK CLUB</Link>
+                <ul className="nav-links">
+                    {/* <li><Link to="/WelcomeScreen">Welcome Screen</Link></li> */}
                 </ul>
-
-
+                <div className="auth-buttons">
+                    <Link to="/" className="login-button">SIGN IN</Link>
+                    <Link to="/Signup" className="signup-button">SIGN UP</Link>
+                </div>
             </nav>
         </header>
-    )
+    );
 }
 
-export default Header
+export default Header;
