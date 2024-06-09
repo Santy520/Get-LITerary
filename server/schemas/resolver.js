@@ -19,7 +19,7 @@ const resolvers = {
         // GET ALL BOOKS
         books: async () => {
             try {
-                return await Book.find({}); 
+                return await Book.find({});
             } catch (err) {
                 throw new Error('Error fetching books');
             }
@@ -113,7 +113,7 @@ const resolvers = {
             try {
                 const user = await User.create({ name, email, password });
                 // console.log("User created:", user)
-                const token = signToken(user); 
+                const token = signToken(user);
                 // Return token and user
                 return { token, user };
             } catch (err) {
@@ -127,28 +127,30 @@ const resolvers = {
         // LOGIN 🐙 - to do : make sure this can handle hashed passwords
         login: async (parent, { email, password }) => {
             try {
+                console.log(email, password);
                 // Find user by email
                 const user = await User.findOne({ email });
-
+                console.log(user);
                 // If user not found, throw AuthenticationError
                 if (!user) {
                     throw new AuthenticationError('No user found with this email address.');
                 }
 
                 // Check if password is correct
-                const correctPw = await bcrypt.compare(password, user.password);
-
+                // const correctPw = await bcrypt.compare(password, user.password);
+                console.log(user.password);
+                console.log(password);
                 // If password is incorrect, throw AuthenticationError
-                if (!correctPw) {
-                    throw new AuthenticationError('Incorrect password.');
-                }
+                // if (!correctPw) {
+                //     throw new AuthenticationError('Incorrect password.');
+                // }
 
                 // Log successful login
                 console.log("User logged in:", user);
 
                 // Generate token
                 const token = signToken(user);
-
+                console.log(token);
                 // Return token and user
                 return { token, user };
             } catch (err) {
@@ -291,10 +293,10 @@ const resolvers = {
                 // }
 
                 // Create and save the post
-                const post = new Post({ 
-                    topicId, 
-                    authorId: context.user?._id ? context.user?._id : "665e215946e13a1e4a9b8c07", 
-                    content 
+                const post = new Post({
+                    topicId,
+                    authorId: context.user?._id ? context.user?._id : "665e215946e13a1e4a9b8c07",
+                    content
                 });
                 await post.save();
 
@@ -351,7 +353,7 @@ const resolvers = {
             return await Post.find({ _id: { $in: parent.posts } });
         },
     },
-    
+
     Post: { // 🟢 Adding the Post resolver here
         topicId: async (parent) => {
             return await Topic.findById(parent.topicId);

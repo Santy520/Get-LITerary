@@ -6,6 +6,7 @@ class AuthService {
 
   async loggedIn() {
     const token = this.getToken();
+    console.log(token, 'this is the auth ');
     const isExpired = await this.isTokenExpired(token);
     return token && !isExpired ? true : false;
   }
@@ -26,7 +27,7 @@ class AuthService {
 
   login(idToken) {
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/');
+    window.location.assign('/WelcomeScreen');
   }
 
   logout() {
