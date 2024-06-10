@@ -137,8 +137,8 @@ export const DELETE_CLUB = gql`
 
 // Topic Mutations
 export const ADD_TOPIC = gql`
-    mutation addTopic($clubId: ID!, $title: String!, $bookId: ID!, $posts: [ID]) {
-        addTopic(clubId: $clubId, title: $title, bookId: $bookId, posts: $posts) {
+    mutation addTopic($clubId: ID!, $title: String!, $bookId: ID!) {
+        addTopic(clubId: $clubId, title: $title, bookId: $bookId) {
             _id
             clubId {
                 _id

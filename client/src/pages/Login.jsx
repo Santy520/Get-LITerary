@@ -19,22 +19,26 @@ import loginImage from '../assets/login.png';
 const Login = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
-
+console.log(formState  );
   const handleChange = (event) => {
     const { name, value } = event.target;
+    console.log(name);
     setFormState({
       ...formState,
       [name]: value,
     });
   };
-
+console.log('checking form state', formState);
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      console.log('doing something');
       const { data } = await login({
         variables: { ...formState },
       });
-
+      console.log('hello');
+console.log(data);
+console.log(data.login.token);
       Auth.login(data.login.token);
     } catch (e) {
       console.error(e);
