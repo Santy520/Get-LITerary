@@ -14,7 +14,7 @@ import Header from './components/Header';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import PostForm from './components/PostForm';
-// import Post from './components/Post';
+import Post from './components/Post';
 import ErrorPage from './pages/ErrorPage';
 import Profile from './pages/Profile';
 import Topic from './pages/Topic';
@@ -56,7 +56,7 @@ function App() {
         <Route exact path="/Discussion" element={<DiscussionBoard />} />
         <Route exact path="/Signup" element={<Signup />} />
         <Route exact path="/PostForm" element={<PostForm />} />
-        {/* <Route exact path="/Post" element={<Post />} /> */}
+        <Route exact path="/Post" element={<Post />} />
         <Route exact path="/Profile" element={<Profile />} />
         <Route exact path="/Topic" element={<Topic />} />
         <Route exact path="/Topic/:id" element={<TopicDetails />} />
@@ -69,3 +69,4 @@ function App() {
 }
 
 export default App;
+
