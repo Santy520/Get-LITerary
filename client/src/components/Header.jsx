@@ -27,8 +27,8 @@ function Header() {
 
     return (
         <header>
-            <nav className="navbar">
-                <Link to="/WelcomeScreen" className="logo">BOOK CLUB</Link>
+              <nav className="navbar">
+                <div className="logo">BOOK CLUB</div> 
                 <ul className="nav-links">
                     {/* <li><Link to="/WelcomeScreen">Welcome Screen</Link></li> */}
                 </ul>
