@@ -130,7 +130,7 @@
 // export default Topic;
 import { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import { GET_TOPICS } from '../utils/queries';
+import { GET_TOPICS, GET_ME } from '../utils/queries';
 import { ADD_TOPIC } from '../utils/mutations';
 import {
   Box,
@@ -146,6 +146,7 @@ import {
   Alert,
   AlertIcon,
 } from '@chakra-ui/react';
+import Auth from "../utils/auth";
 
 const Topic = () => {
   const { loading, data, error, refetch } = useQuery(GET_TOPICS);
@@ -154,13 +155,28 @@ const Topic = () => {
   const [clubId, setClubId] = useState('');
   const [bookId, setBookId] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const {authorId} = useQuery(GET_ME, {
+    variables: { token },
+    });
+
+
 
   const handleCreateTopic = async (e) => {
     e.preventDefault();
+   
     try {
       setSubmitting(true);
+      
+      if (!token) {
+        return false;
+        }
+      
+      
+     
+
       await addTopic({
-        variables: { clubId, title, bookId },
+        variables: { clubId, title, bookId, authorId },
       });
       setTitle('');
       setClubId('');

@@ -183,3 +183,14 @@ export const GET_POSTS = gql`
     }
   }
 `;
+
+export const GET_ME = gql`
+  query me($token: String!) {
+    me(token: $token) {
+      _id
+      name
+      email 
+      }
+    }
+  }
+`;

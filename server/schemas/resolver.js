@@ -4,6 +4,7 @@ const { AuthenticationError } = require('apollo-server-express');  // For handli
 const { signToken } = require('../utils/auth');
 const { authMiddleware } = require('../utils/auth'); // Ensure the path matches the actual file casing
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const resolvers = {
     Query: {
@@ -15,6 +16,18 @@ const resolvers = {
                 throw new Error('Error fetching users');
             }
         },
+
+        me: async (parent, { token }) => { 
+      
+            const decodedToken = jwt.decode(token, { complete: true });
+          const userId = decodedToken.payload.data._id;
+            console.log("checking get route", userId) 
+            
+            const user = await User.findOne({ _id: userId });
+            console.log("book data", user)
+          return user;
+            
+          },
 
         // GET ALL BOOKS
         books: async () => {
