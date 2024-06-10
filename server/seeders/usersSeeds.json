@@ -3,18 +3,30 @@
       "name": "Henry",
       "email": "1hramsey@aol.com",
       "password": "testing123",
-      "clubs": [ ] 
+      "clubs": [] 
     },
     {
       "name": "Antonia",
       "email": "1whitestar332@gmail.com",
       "password": "wordpass1",
-      "clubs": [ ]
+      "clubs": []
     },
     {
       "name": "Mark",
       "email": "1markpd@hotmail.com",
       "password": "helloMoto",
-      "clubs": [ ]
+      "clubs": []
+    },
+    {
+      "name": "Heather",
+      "email": "hLancey2@gmail.com",
+      "password": "hLance",
+      "clubs": []
+    },
+    {
+      "name": "Jason",
+      "email": "jayDl@hotmail.com",
+      "password": "Jd123",
+      "clubs": []
     }
   ]

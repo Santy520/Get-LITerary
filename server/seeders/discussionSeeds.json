@@ -3,14 +3,36 @@
     "id": "1",
     "clubId": "1",
     "title": "Themes in The Great Gatsby",
-    "bookId": "1",
-    "posts": ["1"]
+    "bookId": [],
+    "posts": ["Class", "Mortality", "Marriage", "Lies & Deceit", "The American Dream"]
   },
   {
     "id": "2",
-    "clubId": "2",
-    "title": "Racial Issues in To Kill a Mockingbird",
-    "bookId": "2",
-    "posts": ["2"]
+    "clubId": [],
+    "title": "Argue who is/are the most admirable and/or despicable character(s) in the novel and why",
+    "bookId": [],
+    "posts": ["Nick Carraway by far!", "No way!, it's Daisy Buchanan", "Jay Gatsby, of course!", "Trimalchio is SO underrated!", "Myrtle Wilson, in my opinion!"]
+  },
+  {
+    "id": "3",
+    "clubId": [],
+    "title": "Themes in The Great Gatsby",
+    "bookId": "1",
+    "posts": ["Class", "Mortality", "Marriage", "Lies & Deceit", "The American Dream"]
+  }, 
+  {
+    "id": "4",
+    "clubId": [],
+    "title": "Discuss how The Great Gatsby is the quintessential American novel. What does it have to offer about the American identity and the American Dream?",
+    "bookId": "1",
+    "posts": ["American Dream is over", "Hard work, ambition and determination - still valid, if you ask me!", "What American Dream?, lol", "It was once true, but no longer stands", "Guys, don't be so negative!  I think there's still a lot to say of what the American dream continues to mean for many!"]
+  }, 
+  {
+    "id": "5",
+    "clubId": [],
+    "title": "Rate this book 1/10",
+    "bookId": "1",
+    "posts": ["8.5", "10", "6.5", "9", "7.5"]
   }
+
 ]
