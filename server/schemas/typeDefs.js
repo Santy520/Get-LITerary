@@ -76,7 +76,7 @@ const typeDefs = gql `
         deleteUser(id: ID!): User
         login(email: String!, password: String!): Auth
 
-        addTopic(clubId: ID!, authorId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
+        addTopic(clubId: ID!, title: String!, bookId: ID!, posts: [ID]): Topic
         updateTopic(id: ID!, clubId: ID, title: String, bookId: ID, posts: [ID]): Topic
         deleteTopic(id: ID!): Topic
 

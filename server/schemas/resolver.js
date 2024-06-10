@@ -17,17 +17,16 @@ const resolvers = {
             }
         },
 
-        me: async (parent, { token }) => { 
-      
-            const decodedToken = jwt.decode(token, { complete: true });
-          const userId = decodedToken.payload.data._id;
-            console.log("checking get route", userId) 
-            
-            const user = await User.findOne({ _id: userId });
-            console.log("book data", user)
-          return user;
-            
-          },
+        me: async (parent, args, context) => {
+            if (context?.user) {
+                const user = await User.findOne({ _id: context.user._id });
+                return user;
+
+            } else {
+                throw new Error('Error fetching user');
+
+            }
+        },
 
         // GET ALL BOOKS
         books: async () => {
@@ -250,11 +249,16 @@ const resolvers = {
         },
 
         // ADD TOPIC
-        addTopic: async (parent, args) => {
+        addTopic: async (parent, args, context) => {
             try {
-                const topic = await Topic.create(args);
-                console.log("The topic object is:", topic);
-                return topic;
+                if (context?.user) {
+                    const topic = await Topic.create({
+                        ...args,
+                        authorId: context.user._id
+                    });
+                    console.log("The topic object is:", topic);
+                    return topic;
+                }
             } catch (err) {
                 console.error('Error adding topic:', err);
                 throw new Error('Error adding topic: ' + err.message);
