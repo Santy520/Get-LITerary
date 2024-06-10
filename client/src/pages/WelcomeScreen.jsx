@@ -30,7 +30,7 @@ function WelcomeScreen() {
       >
         <Box flex="1" textAlign={{ base: "center", md: "left" }} p={4}>
           <Heading as="h1" size="2xl" mb={4}>
-            Welcome to Book Club
+            Welcome to GetLITerary
           </Heading>
           <Text fontSize="lg" mb={6}>
             Discover, join, and create book clubs with ease. Connect with readers and explore new books together.
