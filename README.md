@@ -11,7 +11,9 @@ The URL of the deployed application is: https://book-club-project3.onrender.com/
 
 
 
-![Screenshot](client/src/img/screenshot.png)
+![Screenshot](client/src/img/Signin-screen.png)
+![Screenshot](client/src/img/Welcome-Screen.png)
+![Screenshot](client/src/img/Topic-Screen.png)
 
 - ![Video](VIDEO GOES HERE OF WORKING APP!)
 
