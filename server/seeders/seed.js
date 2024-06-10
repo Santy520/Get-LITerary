@@ -1,12 +1,13 @@
 // Import required modules
 const mongoose = require('mongoose');
 const db = require('../config/connection');
-const { Book, Club, User } = require('../models');
+const { Book, Club, User, Topic } = require('../models');
 const cleanDb = require('./cleanDb');
 // const bcrypt = require('bcrypt');
 
 // Import seeds from JSON files
  const usersSeeds = require('./usersSeeds.json');
+ const discussionSeeds = require('./discussionSeeds.json')
  const clubSeeds = require('./clubSeeds.json');
  const bookSeeds = require('./bookSeeds.json');
  
@@ -26,6 +27,7 @@ db.once('open', async () => {
     // // Insert other seed data
     await Book.insertMany(bookSeeds);
     await Club.insertMany(clubSeeds);
+    await Topic.insertMany(discussionSeeds);
 
     console.log('all done!');
     process.exit(0);
