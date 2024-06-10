@@ -1,14 +1,8 @@
 [
-  {
-    "title": "The Great Gatsby",
-    "author": "F. Scott Fitzgerald",
-    "summary": "A novel set in the Roaring Twenties...",
-    "clubs": []
-  },
-  {
-    "title": "To Kill a Mockingbird",
-    "author": "Harper Lee",
-    "summary": "A story about racial injustice...",
-    "clubs": []
+    {
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "summary": "A novel set in the Roaring Twenties...",
+      "clubs": []
   }
 ]
