@@ -1,11 +1,12 @@
 
 # GET-LITerary
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 ## Description
 
-**Book Club** is a dynamic platform designed to foster a vibrant community of book enthusiasts! With Book Club, users can seamlessly join book clubs, indulge in thought-provoking discussions, and stay connected with fellow readers. Key features include secure user authentication, personalized dashboards for an enriched reading experience, and a comprehensive discussion board where users can delve into various literary topics. Dive into the world of books with Book Club and engage in a shared passion for literature!
+**GetLITerary** is a dynamic platform designed to foster a vibrant community of book enthusiasts! With Book Club, users can seamlessly join book clubs, indulge in thought-provoking discussions, and stay connected with fellow readers. Key features include secure user authentication, personalized dashboards for an enriched reading experience, and a comprehensive discussion board where users can delve into various literary topics. Dive into the world of books with Book Club and engage in a shared passion for literature!
 
 The URL of the deployed application is: https://book-club-project3.onrender.com/
 
@@ -14,8 +15,6 @@ The URL of the deployed application is: https://book-club-project3.onrender.com/
 ![Screenshot](client/src/img/Signin-screen.png)
 ![Screenshot](client/src/img/Welcome-Screen.png)
 ![Screenshot](client/src/img/Topic-Screen.png)
-
-- ![Video](VIDEO GOES HERE OF WORKING APP!)
 
 
 ## Table of Contents
@@ -75,7 +74,7 @@ The URL of the deployed application is: https://book-club-project3.onrender.com/
 ## Setup and Installation
   - clone the repository:
   ```bash
-  git clone https://github.com/your-username/book-club.git 
+  git clone https://github.com/your-username/GetLIT.git 
   ```
   - navigate to project directory
   ```bash
