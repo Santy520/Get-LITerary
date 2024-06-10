@@ -140,18 +140,11 @@ export const ADD_TOPIC = gql`
     mutation addTopic($clubId: ID!, $title: String!, $bookId: ID!) {
         addTopic(clubId: $clubId, title: $title, bookId: $bookId) {
             _id
-            clubId {
-                _id
-                name
-            }
             title
-            bookId {
-                _id
-                title
-            }
             posts {
                 _id
                 content
+            
             }
         }
     }
